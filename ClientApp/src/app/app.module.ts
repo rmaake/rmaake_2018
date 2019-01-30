@@ -40,6 +40,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 import { EmployeeProfileService } from './services/employeeProfile.service';
+import { BaseTemplateComponent } from './base-template/base-template.component';
+import { UnderConstructionComponent } from './under-construction/under-construction.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import { EmployeeProfileService } from './services/employeeProfile.service';
     NotFoundComponent,
     NotAuthorizedComponent,
     EmployeeProfileComponent,
-    LoginComponent
+    LoginComponent,
+    BaseTemplateComponent,
+    UnderConstructionComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -81,7 +85,7 @@ import { EmployeeProfileService } from './services/employeeProfile.service';
     RouterModule.forRoot([
       { path: '', component: LoginComponent, pathMatch: 'full' },
       { path: 'dashboard', component: HomeComponent },
-      { path: 'project', component: ProjectComponent },
+      { path: 'projects', component: ProjectComponent },
       { path: 'project/:id', component: ProjectViewComponent },
       { path: 'project-edit', component: ProjectEditComponent },
       { path: 'project-edit/:id', component: ProjectEditComponent },

@@ -1,54 +1,59 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="header well">
-      <h2>Admin</h2>
-      <p>Welcome to the admin panel, this is where you can manage employees, clients and suppliers</p>
+<div class="main-content">
+    <h4 align="center" style="padding: 20px">ADMIN PANEL</h4>
+
+    <div class="card-columns">
+        <div class="card stats">
+            <div>
+                <h3 style="color:green">{{employees.length}}</h3>
+            </div>
+            <p>Employees</p>
+        </div>
+        <div class="card stats">
+            <div>
+                <h3 style="color:red">{{clients.length}}</h3>
+            </div>
+            <p>Clients</p>
+        </div>
+        <div class="card stats">
+            <div>
+                <h3>{{suppliers.length}}</h3>
+            </div>
+            <p>Suppliers</p>
+        </div>
     </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-4">
-    <div class="admin-card">
-      <h2>{{employees.length}}</h2>
-      <p>Employees</p>
+
+    <div class="card-columns">
+        <div class="card">
+            <div class="card-body" style="background-color:#ffb142">
+                <a [routerLink]="['/admin-employee']" class="card-title" align="center">
+                    <img src="assets/employees.png" class="img">
+                </a>
+                <a [routerLink]="['/admin-employee']" align="center">
+                    <h6>EMPLOYEES</h6>
+                </a>
+            </div>
+        </div> 
+        
+        <div class="card">
+            <div class="card-body" style="background-color:#227093;">
+                <a [routerLink]="['/admin-client']" class="card-title" align="center">
+                    <img src="assets/client.png" class="img">
+                </a>
+                <a [routerLink]="['/admin-client']" align="center">
+                    <h6>CLIENTS</h6>
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body" style="background-color:#F82E2E;">
+                <a [routerLink]="['/admin-supplier']" class="card-title" align="center">
+                    <img src="assets/supplier.png" class="img">
+                </a>
+                <a [routerLink]="['/admin-supplier']" align="center">
+                    <h6>SUPPLIERS</h6>
+                </a>
+            </div>
+        </div> 
     </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="admin-card">
-      <h2>{{clients.length}}</h2>
-      <p>Clients</p>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="admin-card">
-      <h2>{{suppliers.length}}</h2>
-      <p>Suppliers</p>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-4">
-    <div class="well admin-card" style="background-color:#ffb142">
-      <a [routerLink]="['/admin-employee']" style="text-decoration:none; color: black;">
-        <img src="assets/employees.png" class="dashboard-img">
-        <h3>Employees</h3>
-      </a>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="well admin-card" style="background-color:darkcyan">
-      <a [routerLink]="['/admin-client']" style="text-decoration:none; color: black;">
-        <img src="assets/client.png" class="dashboard-img">
-        <h3>Clients</h3>
-      </a>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="well admin-card" style="background-color:#F82E2E;">
-      <a [routerLink]="['/admin-supplier']" style="text-decoration:none; color: black;">
-        <img src="assets/supplier.png" class="dashboard-img">
-        <h3>Suppliers</h3>
-      </a>
-    </div>
-  </div>
 </div>
