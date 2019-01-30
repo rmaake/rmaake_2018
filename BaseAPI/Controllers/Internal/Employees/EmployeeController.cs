@@ -24,7 +24,7 @@ namespace BaseAPI.Controllers.Internal.Employees
         // GET: api/<controller>
         
         [HttpGet]
-        // [Authorize(Roles = "Employee:6, Employee:5, Employee:12, Employee:13, Employee:15, Employee:16, Employee:10, Employee:11")]
+        [Authorize]
         public IEnumerable<Employee> GetAll()
         {
             return _employee.getAll();
@@ -33,6 +33,7 @@ namespace BaseAPI.Controllers.Internal.Employees
         // GET api/<controller>/5
         
         [HttpGet("{id}", Name = "EmployeeById")]
+        [Authorize]
         // [Authorize(Roles = "Employee:6, Employee:5, Employee:12, Employee:13, Employee:15, Employee:16, Employee:10, Employee:11")]
         public Employee GetById(int id)
         {
@@ -42,6 +43,7 @@ namespace BaseAPI.Controllers.Internal.Employees
         // POST api/<controller>
         
         [HttpPost]
+        [Authorize]
         // [Authorize(Roles = "Employee:12, Employee:13, Employee:15, Employee:16")]
         public IActionResult Create([FromBody] Employee employee)
         {
@@ -54,6 +56,7 @@ namespace BaseAPI.Controllers.Internal.Employees
         // PUT api/<controller>/5
       
         [HttpPut("{id}")]
+        [Authorize]
         // [Authorize(Roles = "Employee:15, Employee:16, Employee:10, Employee:11")]
         public IActionResult Update(int id, [FromBody]Employee employee)
         {
@@ -63,6 +66,7 @@ namespace BaseAPI.Controllers.Internal.Employees
         // DELETE api/<controller>/5
         
         [HttpDelete("{id}")]
+        [Authorize]
         // [Authorize(Roles = "Employee:13, Employee:16, Employee:11, Employee:6")]
         public IActionResult Delete(int id)
         {

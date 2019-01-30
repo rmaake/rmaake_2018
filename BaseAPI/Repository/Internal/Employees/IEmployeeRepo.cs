@@ -9,6 +9,7 @@ namespace BaseAPI.Repository.Internal.Employees
     {
         IEnumerable<Employee> getAll();
         Employee getById(int id);
+        Employee getByUsername(string username);
         bool add(Employee employee);
         bool update(int id, Employee employee);
         bool delete(int id);

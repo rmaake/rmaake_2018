@@ -24,6 +24,7 @@ namespace BaseAPI.Controllers.Extermal.Suppliers
 
         // GET: api/<controller>
         [HttpGet]
+        [Authorize(Roles = "project:read, admin:read, report:read")]
         //[Authorize(Roles = "ExternalSupplierAccount:6, ExternalSupplierAccount:5, ExternalSupplierAccount:12, ExternalSupplierAccount:13, ExternalSupplierAccount:15, ExternalSupplierAccount:16, ExternalSupplierAccount:10, ExternalSupplierAccount:11")]
         public IEnumerable<SupplierAccount> GetAll()
         {
@@ -32,6 +33,7 @@ namespace BaseAPI.Controllers.Extermal.Suppliers
 
         // GET api/<controller>/5
         [HttpGet("{id}", Name = "SupplierAccountById")]
+        [Authorize(Roles = "project:read, admin:read, report:read")]
         //[Authorize(Roles = "ExternalSupplierAccount:6, ExternalSupplierAccount:5, ExternalSupplierAccount:12, ExternalSupplierAccount:13, ExternalSupplierAccount:15, ExternalSupplierAccount:16, ExternalSupplierAccount:10, ExternalSupplierAccount:11")]
         public SupplierAccount GetById(int id)
         {
@@ -40,6 +42,7 @@ namespace BaseAPI.Controllers.Extermal.Suppliers
 
         // POST api/<controller>
         [HttpPost]
+        [Authorize(Roles = "admin:write")]
         //[Authorize(Roles = "ExternalSupplierAccount:12, ExternalSupplierAccount:13, ExternalSupplierAccount:15, ExternalSupplierAccount:16")]
         public IActionResult Create([FromBody]SupplierAccount supplierAccount)
         {
@@ -51,6 +54,7 @@ namespace BaseAPI.Controllers.Extermal.Suppliers
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin:write")]
         //[Authorize(Roles = "ExternalSupplierAccount:15, ExternalSupplierAccount:16, ExternalSupplierAccount:10, ExternalSupplierAccount:11")]
         public IActionResult Update(int id, [FromBody]SupplierAccount supplierAccount)
         {
@@ -59,6 +63,7 @@ namespace BaseAPI.Controllers.Extermal.Suppliers
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin:delete")]
         //[Authorize(Roles = "ExternalSupplierAccount:13, ExternalSupplierAccount:16, ExternalSupplierAccount:11, ExternalSupplierAccount:6")]
         public IActionResult Delete(int id)
         {

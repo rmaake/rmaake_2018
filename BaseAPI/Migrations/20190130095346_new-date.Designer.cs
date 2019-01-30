@@ -4,14 +4,16 @@ using BaseAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BaseAPI.Migrations
 {
     [DbContext(typeof(BaseApiContext))]
-    partial class BaseApiContextModelSnapshot : ModelSnapshot
+    [Migration("20190130095346_new-date")]
+    partial class newdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -12,6 +12,7 @@ namespace BaseAPI.Models.Internal.Projects
         public int ProjectFileId { get; set; }
         public string FilePath { get; set; }
         public string Description { get; set; }
+        public DateTime Date { get; set; }
 
         public int ProjectId { get; set; }
         public int? EmployeeId { get; set; }

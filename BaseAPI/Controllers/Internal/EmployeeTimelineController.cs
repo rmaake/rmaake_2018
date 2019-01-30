@@ -39,6 +39,7 @@ namespace BaseAPI.Controllers.Internal
         [HttpPost]
         public IActionResult Post([FromBody]EmployeeTimeline value)
         {
+            value.Date = DateTime.Now;
             _context.EmployeeTimeline.Add(value);
             _context.SaveChanges();
             return CreatedAtRoute("EmployeeTimelineById", new { Controller = "EmployeeTimeline", id = value.EmployeeTimelineId }, value);

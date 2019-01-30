@@ -31,6 +31,18 @@ namespace BaseAPI.Repository.Internal.Employees
         {
             return _context.Employees.Where(obj => obj.EmployeeId == id).SingleOrDefault();
         }
+        public Employee getByUsername(string username)
+        {
+            try
+            {
+                return _context.Employees.Where(obj => obj.Username.Equals(username) == true).SingleOrDefault();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                return new Employee();
+            }
+        }
         public bool add(Employee employee)
         {
             var tmp = new ComMails();

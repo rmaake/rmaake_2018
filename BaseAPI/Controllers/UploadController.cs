@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ namespace BaseAPI.Controllers
 {
     [Route("api/[controller]"), DisableRequestSizeLimit]
     [EnableCors("AllowAnyOrigin")]
+    [Authorize]
     //[Authorize(Roles = "Instructor, Admin")]
     public class UploadController : Controller
     {

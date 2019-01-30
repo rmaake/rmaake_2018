@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using BaseAPI.Repository.Internal.Projects;
 using BaseAPI.Models.Internal.Projects;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BaseAPI.Controllers.Internal.Projects
@@ -21,6 +22,7 @@ namespace BaseAPI.Controllers.Internal.Projects
         }
         // GET: api/<controller>
         [HttpGet]
+        [Authorize]
         public IEnumerable<ProjectContent> Get()
         {
             return _repo.getAll();
@@ -28,6 +30,7 @@ namespace BaseAPI.Controllers.Internal.Projects
 
         // GET api/<controller>/5
         [HttpGet("{id}", Name ="ProjectContentById")]
+        [Authorize]
         public ProjectContent Get(int id)
         {
             return _repo.getById(id);
@@ -35,6 +38,7 @@ namespace BaseAPI.Controllers.Internal.Projects
 
         // POST api/<controller>
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody]ProjectContent value)
         {
             var res = _repo.add(value);
@@ -45,6 +49,7 @@ namespace BaseAPI.Controllers.Internal.Projects
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(int id, [FromBody]ProjectContent value)
         {
             return _repo.update(id, value) ? new NoContentResult() : StatusCode(500);
@@ -52,6 +57,7 @@ namespace BaseAPI.Controllers.Internal.Projects
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             return _repo.delete(id) ? new NoContentResult() : StatusCode(500);

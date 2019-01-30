@@ -23,6 +23,7 @@ namespace BaseAPI.Controllers.Internal.Employees
         }
         // GET: api/<controller>
         [HttpGet]
+        [Authorize(Roles = "admin:read")]
         //[Authorize(Roles = "EmployeeAccount:6, EmployeeAccount:5, EmployeeAccount:12, EmployeeAccount:13, EmployeeAccount:15, EmployeeAccount:16, EmployeeAccount:10, EmployeeAccount:11")]
         public IEnumerable<EmployeeAccounts> GetAll()
         {
@@ -31,6 +32,7 @@ namespace BaseAPI.Controllers.Internal.Employees
 
         // GET api/<controller>/5
         [HttpGet("{id}", Name = "employeeAccountById")]
+        [Authorize(Roles = "admin:read")]
         //[Authorize(Roles = "EmployeeAccount:6, EmployeeAccount:5, EmployeeAccount:12, EmployeeAccount:13, EmployeeAccount:15, EmployeeAccount:16, EmployeeAccount:10, EmployeeAccount:11")]
         public EmployeeAccounts GetById(int id)
         {
@@ -39,6 +41,7 @@ namespace BaseAPI.Controllers.Internal.Employees
 
         // POST api/<controller>
         [HttpPost]
+        [Authorize(Roles = "admin:write")]
         //[Authorize(Roles = "EmployeeAccount:12, EmployeeAccount:13, EmployeeAccount:15, EmployeeAccount:16")]
         public IActionResult Create([FromBody] EmployeeAccounts employeeAccount)
         {
@@ -51,6 +54,7 @@ namespace BaseAPI.Controllers.Internal.Employees
         // PUT api/<controller>/5
         
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin:write")]
         //[Authorize(Roles = "EmployeeAccount:15, EmployeeAccount:16, EmployeeAccount:10, EmployeeAccount:11")]
         public IActionResult Update(int id, [FromBody]EmployeeAccounts employeeAccount)
         {
@@ -60,6 +64,7 @@ namespace BaseAPI.Controllers.Internal.Employees
         // DELETE api/<controller>/5
         
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin:delete")]
         //[Authorize(Roles = "EmployeeAccount:13, EmployeeAccount:16, EmployeeAccount:11, EmployeeAccount:6")]
         public IActionResult Delete(int id)
         {

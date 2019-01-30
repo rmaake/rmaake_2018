@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using BaseAPI.Repository.Internal.Employees;
 using BaseAPI.Models.Internal.Employees;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BaseAPI.Controllers.Internal.Employees
@@ -22,6 +23,7 @@ namespace BaseAPI.Controllers.Internal.Employees
         }
         // GET: api/<controller>
         [HttpGet]
+        [Authorize]
         //[Authorize(Roles = "EmployeeRole:6, EmployeeRole:5, EmployeeRole:12, EmployeeRole:13, EmployeeRole:15, EmployeeRole:16, EmployeeRole:10, EmployeeRole:11")]
         public IEnumerable<EmployeeRole> GetAll()
         {
@@ -30,6 +32,7 @@ namespace BaseAPI.Controllers.Internal.Employees
 
         // GET api/<controller>/5
         [HttpGet("{id}", Name = "EmployeeRoleById")]
+        [Authorize]
         //[Authorize(Roles = "EmployeeRole:6, EmployeeRole:5, EmployeeRole:12, EmployeeRole:13, EmployeeRole:15, EmployeeRole:16, EmployeeRole:10, EmployeeRole:11")]
         public EmployeeRole GetById(int id)
         {
@@ -38,6 +41,7 @@ namespace BaseAPI.Controllers.Internal.Employees
 
         // POST api/<controller>
         [HttpPost]
+        [Authorize]
         //[Authorize(Roles = "EmployeeRole:12, EmployeeRole:13, EmployeeRole:15, EmployeeRole:16")]
         public IActionResult Create([FromBody] EmployeeRole EmployeeRole)
         {
@@ -50,6 +54,7 @@ namespace BaseAPI.Controllers.Internal.Employees
         // PUT api/<controller>/5
 
         [HttpPut("{id}")]
+        [Authorize]
         //[Authorize(Roles = "EmployeeRole:15, EmployeeRole:16, EmployeeRole:10, EmployeeRole:11")]
         public IActionResult Update(int id, [FromBody]EmployeeRole EmployeeRole)
         {
@@ -59,6 +64,7 @@ namespace BaseAPI.Controllers.Internal.Employees
         // DELETE api/<controller>/5
 
         [HttpDelete("{id}")]
+        [Authorize]
         //[Authorize(Roles = "EmployeeRole:13, EmployeeRole:16, EmployeeRole:11, EmployeeRole:6")]
         public IActionResult Delete(int id)
         {

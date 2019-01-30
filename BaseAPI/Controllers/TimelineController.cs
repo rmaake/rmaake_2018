@@ -13,6 +13,7 @@ namespace BaseAPI.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("AllowAnyOrigin")]
+    [Authorize]
     public class TimelineController : Controller
     {
         private ITimelineRepo _timeline;

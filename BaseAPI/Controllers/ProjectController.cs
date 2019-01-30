@@ -13,6 +13,7 @@ namespace BaseAPI.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("AllowAnyOrigin")]
+    [Authorize]
     public class ProjectController : Controller
     {
         private IProjectRepo _project;

@@ -30,6 +30,7 @@ namespace BaseAPI.Repository.Internal.Projects
         {
             try
             {
+                file.Date = DateTime.Now;
                 _context.ProjectFiles.Add(file);
                 _context.SaveChanges();
                 return true;

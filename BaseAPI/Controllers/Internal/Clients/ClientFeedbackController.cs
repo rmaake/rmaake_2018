@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using BaseAPI.Repository.Internal.Clients;
 using BaseAPI.Models.Internal.Clients;
+using Microsoft.AspNetCore.Authorization;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BaseAPI.Controllers.Internal.Clients
@@ -22,6 +23,7 @@ namespace BaseAPI.Controllers.Internal.Clients
         }
         // GET: api/<controller>
         [HttpGet]
+        [Authorize]
         //[Authorize(Roles = "ClientFeedback:6, ClientFeedback:5, ClientFeedback:12, ClientFeedback:13, ClientFeedback:15, ClientFeedback:16, ClientFeedback:10, ClientFeedback:11")]
         public IEnumerable<ClientFeedback> GetAll()
         {
@@ -30,6 +32,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // GET api/<controller>/5
         [HttpGet("{id}", Name = "ClientFeedbackById")]
+        [Authorize]
         //[Authorize(Roles = "ClientFeedback:6, ClientFeedback:5, ClientFeedback:12, ClientFeedback:13, ClientFeedback:15, ClientFeedback:16, ClientFeedback:10, ClientFeedback:11")]
         public ClientFeedback GetById(int id)
         {
@@ -38,6 +41,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // POST api/<controller>
         [HttpPost]
+        [Authorize]
         //[Authorize(Roles = "ClientFeedback:12, ClientFeedback:13, ClientFeedback:15, ClientFeedback:16")]
         public IActionResult Create([FromBody] ClientFeedback ClientFeedback)
         {
@@ -49,6 +53,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
+        [Authorize]
         //[Authorize(Roles = "ClientFeedback:15, ClientFeedback:16, ClientFeedback:10, ClientFeedback:11")]
         public IActionResult Update(int id, [FromBody]ClientFeedback ClientFeedback)
         {
@@ -57,6 +62,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
+        [Authorize]
         //[Authorize(Roles = "ClientFeedback:13, ClientFeedback:16, ClientFeedback:11, ClientFeedback:6")]
         public IActionResult Delete(int id)
         {

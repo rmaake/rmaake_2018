@@ -23,6 +23,7 @@ namespace BaseAPI.Controllers.Internal.Clients
         }
         // GET: api/<controller>
         [HttpGet]
+        [Authorize]
         //[Authorize(Roles = "ClientContact:6, ClientContact:5, ClientContact:12, ClientContact:13, ClientContact:15, ClientContact:16, ClientContact:10, ClientContact:11")]
         public IEnumerable<ClientContactInfo> GetAll()
         {
@@ -31,6 +32,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // GET api/<controller>/5
         [HttpGet("{id}", Name = "ClientContactById")]
+        [Authorize]
         //[Authorize(Roles = "ClientContact:6, ClientContact:5, ClientContact:12, ClientContact:13, ClientContact:15, ClientContact:16, ClientContact:10, ClientContact:11")]
         public ClientContactInfo GetById(int id)
         {
@@ -39,6 +41,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // POST api/<controller>
         [HttpPost]
+        [Authorize]
         //[Authorize(Roles = "ClientContact:12, ClientContact:13, ClientContact:15, ClientContact:16")]
         public IActionResult Create([FromBody] ClientContactInfo clientContact)
         {
@@ -50,6 +53,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
+        [Authorize]
         //[Authorize(Roles = "ClientContact:15, ClientContact:16, ClientContact:10, ClientContact:11")]
         public IActionResult Update(int id, [FromBody]ClientContactInfo clientContact)
         {
@@ -58,6 +62,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
+        [Authorize]
         //[Authorize(Roles = "ClientContact:13, ClientContact:16, ClientContact:11, ClientContact:6")]
         public IActionResult Delete(int id)
         {

@@ -14,6 +14,7 @@ namespace BaseAPI.Models.Internal
         public int? TimelineId { get; set; }
         public int? ProjectId { get; set; }
         public int? EmployeeRoleId { get; set; }
+        public DateTime Date { get; set; }
 
         public Employee Employee { get; set; }
         public Project Project { get; set; }

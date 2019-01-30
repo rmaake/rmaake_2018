@@ -24,6 +24,7 @@ namespace BaseAPI.Controllers.Internal.Clients
         }
         // GET: api/<controller>
         [HttpGet]
+        [Authorize]
         // [Authorize(Roles = "Client:6, Client:5, Client:12, Client:13, Client:15, Client:16, Client:10, Client:11")]
         public IEnumerable<Client> GetAll()
         {
@@ -32,6 +33,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // GET api/<controller>/5
         [HttpGet("{id}", Name = "ClientById")]
+        [Authorize]
         // [Authorize(Roles = "Client:6, Client:5, Client:12, Client:13, Client:15, Client:16, Client:10, Client:11")]
         public Client GetById(int id)
         {
@@ -40,6 +42,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // POST api/<controller>
         [HttpPost]
+        [Authorize]
         // [Authorize(Roles = "Client:12, Client:13, Client:15, Client:16")]
         public IActionResult Create([FromBody] Client client)
         {
@@ -51,6 +54,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
+        [Authorize]
         // [Authorize(Roles = "Client:15, Client:16, Client:10, Client:11")]
         public IActionResult Update(int id, [FromBody]Client client)
         {
@@ -59,6 +63,7 @@ namespace BaseAPI.Controllers.Internal.Clients
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
+        [Authorize]
         // [Authorize(Roles = "Client:13, Client:16, Client:11, Client:6")]
         public IActionResult Delete(int id)
         {

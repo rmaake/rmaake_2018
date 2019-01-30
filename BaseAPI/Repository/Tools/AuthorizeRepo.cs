@@ -30,7 +30,7 @@ namespace BaseAPI.Repository.Tools
                 tmp.ContactNumber = "+27718493239";
                 tmp.Username = "rmaake";
                 tmp.Password = "maake82552";
-                tmp.AccessCode = "Employee:16.";
+                tmp.AccessCode = "admin:read.admin:delete.admin:write";
                 return tmp;
             }
             else if (credentials.Username == "akhanye" && credentials.Password == "akhanye123")

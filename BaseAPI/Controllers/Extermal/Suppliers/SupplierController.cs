@@ -22,6 +22,7 @@ namespace BaseAPI.Controllers.Extermal.Suppliers
         }
         // GET: api/<controller>
         [HttpGet]
+        [Authorize(Roles = "project:read, admin:read, report:read")]
         // [Authorize(Roles = "ExternalSupplier:6, ExternalSupplier:5, ExternalSupplier:12, ExternalSupplier:13, ExternalSupplier:15, ExternalSupplier:16, ExternalSupplier:10, ExternalSupplier:11")]
         public IEnumerable<Supplier> GetAll()
         {
@@ -30,6 +31,7 @@ namespace BaseAPI.Controllers.Extermal.Suppliers
 
         // GET api/<controller>/5
         [HttpGet("{id}",Name = "SupplierById")]
+        [Authorize(Roles = "project:read, admin:read, report:read")]
         // [Authorize(Roles = "ExternalSupplier:6, ExternalSupplier:5, ExternalSupplier:12, ExternalSupplier:13, ExternalSupplier:15, ExternalSupplier:16, ExternalSupplier:10, ExternalSupplier:11")]
         public Supplier GetById(int id)
         {
@@ -38,6 +40,7 @@ namespace BaseAPI.Controllers.Extermal.Suppliers
 
         // POST api/<controller>
         [HttpPost]
+        [Authorize(Roles = "project:write, admin:write")]
         // [Authorize(Roles = "ExternalSupplier:12, ExternalSupplier:13, ExternalSupplier:15, ExternalSupplier:16")]
         public IActionResult Create([FromBody]Supplier supplier)
         {
@@ -49,6 +52,7 @@ namespace BaseAPI.Controllers.Extermal.Suppliers
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "project:write, admin:write")]
         // [Authorize(Roles = "ExternalSupplier:15, ExternalSupplier:16, ExternalSupplier:10, ExternalSupplier:11")]
         public IActionResult Update(int id, [FromBody]Supplier supplier)
         {
@@ -57,6 +61,7 @@ namespace BaseAPI.Controllers.Extermal.Suppliers
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin:delete")]
         // [Authorize(Roles = "ExternalSupplier:13, ExternalSupplier:16, ExternalSupplier:11, ExternalSupplier:6")]
         public IActionResult Delete(int id)
         {

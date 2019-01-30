@@ -13,7 +13,7 @@ namespace BaseAPI.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("AllowAnyOrigin")]
-    //[Authorize]
+    [Authorize]
     public class ProjectStatusController : Controller
     {
         private BaseApiContext _context;

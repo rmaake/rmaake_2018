@@ -23,6 +23,7 @@ namespace BaseAPI.Controllers.Internal.Projects.Defaults
         }
         // GET: api/<controller>
         [HttpGet]
+        [Authorize]
         //[Authorize(Roles = "Default:6, Default:5, Default:12, Default:13, Default:15, Default:16, Default:10, Default:11")]
         public IEnumerable<Default> GetAll()
         {
@@ -31,6 +32,7 @@ namespace BaseAPI.Controllers.Internal.Projects.Defaults
 
         // GET api/<controller>/5
         [HttpGet("{id}", Name = "DefaultById")]
+        [Authorize]
         //[Authorize(Roles = "Default:6, Default:5, Default:12, Default:13, Default:15, Default:16, Default:10, Default:11")]
         public Default GetById(int id)
         {
@@ -39,6 +41,7 @@ namespace BaseAPI.Controllers.Internal.Projects.Defaults
 
         // POST api/<controller>
         [HttpPost]
+        [Authorize]
         //[Authorize(Roles = "Default:12, Default:13, Default:15, Default:16")]
         public IActionResult Create([FromBody] Default Default)
         {
@@ -50,6 +53,7 @@ namespace BaseAPI.Controllers.Internal.Projects.Defaults
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
+        [Authorize]
         //[Authorize(Roles = "Default:15, Default:16, Default:10, Default:11")]
         public IActionResult Update(int id, [FromBody]Default Default)
         {
@@ -58,6 +62,7 @@ namespace BaseAPI.Controllers.Internal.Projects.Defaults
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
+        [Authorize]
         //[Authorize(Roles = "Default:13, Default:16, Default:11, Default:6")]
         public IActionResult Delete(int id)
         {
