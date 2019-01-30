@@ -16,6 +16,7 @@ import { EmployeeKin } from '../models/employeeKin';
 import { EmployeeAccount } from '../models/employeeAccount';
 import { SupplierAccount } from '../models/supplierAccount.model';
 import { EmployeeRole } from '../models/employeeRole.model';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class AdminService {
@@ -28,7 +29,7 @@ export class AdminService {
   public employeeKinSubject: BehaviorSubject<EmployeeKin[]>;
   public employeeAccountSubject: BehaviorSubject<EmployeeAccount[]>;
   public employeeRoleSubject: BehaviorSubject<EmployeeRole[]>;
-  private url = 'http://localhost:55079/api/';
+  private url = environment.apiUrl;
   public isLoggedIn: Observable<number>;
   public employee: Observable<Employee[]>;
   public client: Observable<Client[]>;

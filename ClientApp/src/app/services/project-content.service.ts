@@ -12,6 +12,7 @@ import { ProjectContent } from '../models/projectContent.model';
 import { Default } from '../models/default.model';
 import { ProjectService } from './project.service';
 import { SnagsComponent } from '../project/snags/snags.component';
+import { environment } from '../../environments/environment.prod';
 
 
 @Injectable()
@@ -19,7 +20,7 @@ export class ProjectContentService {
   public projectContentSubject: BehaviorSubject<ProjectContent[]>;
   public defaultSubject: BehaviorSubject<Default[]>;
 
-  private url = 'http://localhost:55079/api/';
+  private url = environment.apiUrl;
   public isLoggedIn: Observable<number>;
 
   private options: RequestOptions;

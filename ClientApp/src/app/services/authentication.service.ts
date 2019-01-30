@@ -11,6 +11,7 @@ import { ClientContact } from '../models/clientContact.model';
 import { Employee } from '../models/employee.model';
 import { UserCredentials } from '../models/userCredentials.model';
 import { Client } from '../models/client.model';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +19,7 @@ export class AuthService {
   public currentClientSubject: BehaviorSubject<ClientContact>;
   public currentEmployeeSubject: BehaviorSubject<Employee>;
   private isLoggedInSubject: BehaviorSubject<number>;
-  private url = 'http://localhost:55079/api/';
+  private url = environment.apiUrl;
   public isLoggedIn: Observable<number>;
   public currentEmployee: Observable<Employee>;
   public currentClient: Observable<ClientContact>;

@@ -13,6 +13,7 @@ import { FeedbackComment } from '../models/FeedbackComment.model';
 import { ClientTimelineViewComponent } from '../client-dashboard/client-timeline-view/client-timeline-view.component';
 import { Employee } from '../models/employee.model';
 import { ClientContact } from '../models/clientContact.model';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -20,7 +21,7 @@ export class FeedbackService {
 
   public feedbacksSubject: BehaviorSubject<ClientFeedback[]>;
   public commentsSubject: BehaviorSubject<FeedbackComment[]>;
-  private url = 'http://localhost:55079/api/';
+  private url = environment.apiUrl;
   private options: RequestOptions;
 
   constructor(private http: Http, public location: Location, public router: Router, private httpClient: HttpClient) {

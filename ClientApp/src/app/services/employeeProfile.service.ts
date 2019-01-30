@@ -14,11 +14,12 @@ import { Client } from '../models/client.model';
 import { PasswordChange } from '../models/passwordChange.model';
 import { HttpRequest, HttpEventType, HttpClient } from '@angular/common/http';
 import { EmployeeProfileComponent } from '../employee-profile/employee-profile.component';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class EmployeeProfileService {
 
-  private url = 'http://localhost:55079/api/';
+  private url = environment.apiUrl;
   private options: RequestOptions;
 
   constructor(private http: Http, public location: Location, public router: Router, private httpClient: HttpClient) {

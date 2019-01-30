@@ -16,6 +16,7 @@ import { Timeline } from '../models/Timeline.model';
 import { EmployeeTimeline } from '../models/EmployeeTimeline.model';
 import { AdminService } from './admin.service';
 import { ProjectViewComponent } from '../project/project-view/project-view.component';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class ProjectService {
@@ -26,7 +27,7 @@ export class ProjectService {
   public timelineSubject: BehaviorSubject<Timeline[]>;
   public employeeTimelineSubject: BehaviorSubject<EmployeeTimeline[]>;
 
-  private url = 'http://localhost:55079/api/';
+  private url = environment.apiUrl;
   private options: RequestOptions;
 
   constructor(private http: Http, private httpClient: HttpClient, public admin: AdminService, public router: Router) {
