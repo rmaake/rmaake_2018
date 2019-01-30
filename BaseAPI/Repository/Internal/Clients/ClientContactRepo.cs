@@ -28,6 +28,10 @@ namespace BaseAPI.Repository.Internal.Clients
         {
             return _context.ClientContactInfos.Where(obj => obj.ClientContactInfoId == id).SingleOrDefault();
         }
+        public ClientContactInfo getByUsername(string username)
+        {
+            return _context.ClientContactInfos.Where(obj => username.Equals(username) == true).SingleOrDefault();
+        }
         public bool add(ClientContactInfo clientContact)
         {
             var tmp = new ComMails();

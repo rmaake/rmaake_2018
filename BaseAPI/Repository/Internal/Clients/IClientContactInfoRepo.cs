@@ -10,6 +10,7 @@ namespace BaseAPI.Repository.Internal.Clients
     {
         IEnumerable<ClientContactInfo> getAll();
         ClientContactInfo getById(int id);
+        ClientContactInfo getByUsername(string username);
         bool add(ClientContactInfo clientContactInfo);
         bool update(int id, ClientContactInfo clientContactInfo);
         bool delete(int id);
