@@ -78,7 +78,7 @@ namespace BaseAPI
                 };
             });
             services.AddCors(option => option.AddPolicy("AllowAnyOrigin", builder => builder.AllowAnyOrigin()
-            .AllowAnyOrigin()
+            .AllowAnyOrigin()   
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()));
