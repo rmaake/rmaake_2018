@@ -8,6 +8,7 @@ import { Timeline } from '../models/Timeline.model';
 import { ProjectStatus } from '../models/projectStatus.model';
 import { Client } from '../models/client.model';
 import { window } from 'rxjs/operator/window';
+import { Employee } from '../models/employee.model';
 
 @Component({
   selector: 'app-project',
@@ -29,6 +30,7 @@ export class ProjectComponent implements OnInit {
     
   }
   ngOnInit() {
+    this.authorize();
     this.service.getProjectStatus();
     this.service.getProjects();
     this.service.getTimeline();
@@ -106,5 +108,28 @@ export class ProjectComponent implements OnInit {
   }
   toView(id: number) {
     this.router.navigateByUrl('project/' + id.toString());
+  }
+  authorize() {
+    var tmpUser = JSON.parse(sessionStorage.getItem('userData')) as Employee;
+    if (sessionStorage.getItem('currentUser') != '2') {
+      this.router.navigateByUrl('access-control');
+      return;
+    }
+    var read = false;
+    var write = false;
+    var dlt = false;
+    var permission = tmpUser.accessCode.split(".");
+    for (var i = 0; i < permission.length; i++) {
+      if (permission[i].localeCompare('admin:read') == 0 || permission[i].localeCompare('projects:read') == 0)
+        read = true;
+      if (permission[i].localeCompare('admin:write') == 0 || permission[i].localeCompare('projects:write') == 0)
+        write = true;
+      if (permission[i].localeCompare('admin:delete') == 0 || permission[i].localeCompare('projects:delete') == 0)
+        dlt = true;
+    }
+    if (read == false && write == false && dlt == false) {
+      this.router.navigateByUrl('access-control');
+      return;
+    }
   }
 }

@@ -19,6 +19,7 @@ export class AdminComponent implements OnInit {
   constructor(private service: AdminService, private router: Router) {
   }
   ngOnInit() {
+    this.authorize();
     this.service.getClients();
     this.service.getSuppliers();
     this.service.getEmployees();
@@ -33,6 +34,29 @@ export class AdminComponent implements OnInit {
       
     });
     //this.service.signOut();
+  }
+  authorize() {
+    var tmpUser = JSON.parse(sessionStorage.getItem('userData')) as Employee;
+    if (sessionStorage.getItem('currentUser') != '2') {
+      this.router.navigateByUrl('access-control');
+      return;
+    }
+    var read = false;
+    var write = false;
+    var dlt = false;
+    var permission = tmpUser.accessCode.split(".");
+    for (var i = 0; i < permission.length; i++) {
+      if (permission[i].localeCompare('admin:read') == 0)
+        read = true;
+      if (permission[i].localeCompare('admin:write') == 0)
+        write = true;
+      if (permission[i].localeCompare('admin:delete') == 0)
+        dlt = true;
+    }
+    if (read == false && write == false && dlt == false) {
+      this.router.navigateByUrl('access-control');
+      return;
+    }
   }
 
 }

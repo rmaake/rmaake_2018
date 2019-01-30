@@ -32,6 +32,7 @@ export class ClientProjectComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.authorize();
     this.service.getProjectStatus();
     this.service.getProjects();
     this.service.getTimeline();
@@ -108,5 +109,13 @@ export class ClientProjectComponent implements OnInit {
   }
   toView(id: number) {
     this.router.navigateByUrl('client-view/' + id.toString());
+  }
+  authorize() {
+
+    if (sessionStorage.getItem('currentUser') != '1') {
+      this.router.navigateByUrl('access-control');
+      return;
+    }
+
   }
 }

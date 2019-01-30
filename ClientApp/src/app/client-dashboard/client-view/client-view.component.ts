@@ -41,6 +41,7 @@ export class ClientViewComponent implements OnInit {
     
   }
   ngOnInit() {
+    this.authorize();
     this.getById(this.id);
     this.service.projectStatusSubject.subscribe(resp => {
       this.status = resp;
@@ -176,6 +177,14 @@ export class ClientViewComponent implements OnInit {
   
   toViewTimeline(id: number) {
     this.router.navigateByUrl('client-timeline-view/' + this.id.toString() + '/' + id.toString());
+  }
+  authorize() {
+
+    if (sessionStorage.getItem('currentUser') != '1') {
+      this.router.navigateByUrl('access-control');
+      return;
+    }
+
   }
   
 }

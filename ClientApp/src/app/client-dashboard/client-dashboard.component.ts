@@ -13,6 +13,14 @@ export class ClientDashboardComponent implements OnInit {
    
   }
   ngOnInit() {
+    this.authorize();
+  }
+  authorize() {
+    
+    if (sessionStorage.getItem('currentUser') != '1') {
+      this.router.navigateByUrl('access-control');
+      return;
+    }
     
   }
 

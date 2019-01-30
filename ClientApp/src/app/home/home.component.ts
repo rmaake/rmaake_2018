@@ -5,6 +5,7 @@ import { Client } from '../models/client.model';
 import { Project } from '../models/project.model';
 import { Timeline } from '../models/Timeline.model';
 import { ProjectStatus } from '../models/projectStatus.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,10 +18,11 @@ export class HomeComponent implements OnInit {
   completedProjects: number = 0;
   timeline: Timeline[] = [];
   status: ProjectStatus[] = []
-  constructor( private projS: ProjectService) {
+  constructor(private projS: ProjectService, private router: Router) {
 
   }
   ngOnInit() {
+    this.authorize();
     this.projS.admin.clientSubject.subscribe(resp => {
       this.clients = resp;
     })
@@ -51,6 +53,13 @@ export class HomeComponent implements OnInit {
         if (this.timeline[j].projectStatusId == this.status[i].projectStatusId && this.status[i].stage.localeCompare('completed') == 0)
           this.completedProjects++;
       }
+    }
+  }
+  authorize() {
+
+    if (sessionStorage.getItem('currentUser') != '2') {
+      this.router.navigateByUrl('access-control');
+      return;
     }
   }
 }

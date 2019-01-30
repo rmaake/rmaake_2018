@@ -36,6 +36,8 @@ import { ClientViewComponent } from './client-dashboard/client-view/client-view.
 import { ClientTimelineViewComponent } from './client-dashboard/client-timeline-view/client-timeline-view.component';
 import { FeedbackService } from './services/Feedback.service';
 import { ClientFeedbackComponent } from './client-dashboard/client-feedback/client-feedback.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { ClientFeedbackComponent } from './client-dashboard/client-feedback/clie
     ClientViewComponent,
     ClientTimelineViewComponent,
     ClientFeedbackComponent,
+    NotFoundComponent,
+    NotAuthorizedComponent,
     LoginComponent
   ],
   imports: [
@@ -103,6 +107,8 @@ import { ClientFeedbackComponent } from './client-dashboard/client-feedback/clie
       { path: 'client-feedback/:id', component: ClientFeedbackComponent },
       { path: 'client-feedback', component: ClientFeedbackComponent },
       { path: 'logout', component: LogoutComponent },
+      { path: 'access-control', component: NotAuthorizedComponent },
+      { path: '**', component: NotFoundComponent },
     ])
   ],
   providers: [AuthService, AdminService, ProjectService, ProjectContentService, FeedbackService],

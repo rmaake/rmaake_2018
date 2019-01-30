@@ -47,6 +47,7 @@ export class ClientTimelineViewComponent implements OnInit {
     this.contact = JSON.parse(sessionStorage.getItem('userData')) as ClientContact;
   }
   ngOnInit() {
+    this.authorize();
     this.service.service.projectStatusSubject.subscribe(resp => {
       this.status = resp;
     });
@@ -107,5 +108,12 @@ export class ClientTimelineViewComponent implements OnInit {
     else
       this.feedS.upload(file, this, '');
   }
+  authorize() {
 
+    if (sessionStorage.getItem('currentUser') != '1') {
+      this.router.navigateByUrl('access-control');
+      return;
+    }
+
+  }
 }
