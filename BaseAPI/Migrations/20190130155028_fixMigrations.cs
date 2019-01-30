@@ -18,7 +18,7 @@ namespace BaseAPI.Migrations
                     amount = table.Column<float>(nullable: false),
                     balance = table.Column<float>(nullable: false),
                     BaseAccountId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
                 },
                 constraints: table =>
                 {
@@ -30,7 +30,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     ClientId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ClientName = table.Column<string>(nullable: true),
                     VatNumber = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true)
@@ -45,7 +45,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     DefaultTypeId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -58,7 +58,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     EmployeeRoleId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true)
                 },
@@ -72,7 +72,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     EmployeeId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(nullable: true),
                     MaidenName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
@@ -98,7 +98,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     SupplierId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     Tell = table.Column<string>(nullable: true),
@@ -114,7 +114,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     ProjectStatusId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
                     Stage = table.Column<string>(nullable: true)
                 },
@@ -133,7 +133,7 @@ namespace BaseAPI.Migrations
                     amount = table.Column<float>(nullable: false),
                     balance = table.Column<float>(nullable: false),
                     mainAccountId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     BaseAccountId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -152,7 +152,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     ClientContactInfoId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
@@ -182,7 +182,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     ProjectId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
                     Facility = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -205,7 +205,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     QuoteId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
                     ClientsId = table.Column<int>(nullable: false),
                     ClientId = table.Column<int>(nullable: true)
@@ -226,7 +226,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     EmployeeAccountsId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     BankName = table.Column<string>(nullable: true),
                     AccountNumber = table.Column<string>(nullable: true),
                     BranchCode = table.Column<string>(nullable: true),
@@ -248,7 +248,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     EmployeeKinId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(nullable: true),
                     MaidenName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
@@ -276,7 +276,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     QuoteId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ReferenceNumber = table.Column<string>(nullable: true),
                     Discount = table.Column<double>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
@@ -298,7 +298,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     SupplierAccountId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ReferenceNumber = table.Column<string>(nullable: true),
                     BankName = table.Column<string>(nullable: true),
                     BankAccount = table.Column<string>(nullable: true),
@@ -326,7 +326,7 @@ namespace BaseAPI.Migrations
                     amount = table.Column<float>(nullable: false),
                     balance = table.Column<float>(nullable: false),
                     AccountsId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     isDebtor = table.Column<bool>(nullable: false),
                     isCreditor = table.Column<bool>(nullable: false),
                     isBank = table.Column<bool>(nullable: false),
@@ -350,7 +350,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     TransactionId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     description = table.Column<string>(nullable: true),
                     name = table.Column<string>(nullable: true),
                     dateTime = table.Column<DateTime>(nullable: false),
@@ -374,7 +374,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     ClientFeedbackId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
                     ImagePath = table.Column<string>(nullable: true),
                     VoiceNotePath = table.Column<string>(nullable: true),
@@ -399,7 +399,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     CostEstimateId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Date = table.Column<DateTime>(nullable: false),
                     EmployeeId = table.Column<int>(nullable: false),
                     ProjectId = table.Column<int>(nullable: false)
@@ -426,7 +426,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     InvoiceId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
                     ProjectId = table.Column<int>(nullable: false)
                 },
@@ -446,7 +446,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     ProjectFileId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FilePath = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
@@ -482,7 +482,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     TimelineId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Stage = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     OverallTimeline = table.Column<bool>(nullable: false),
@@ -514,7 +514,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     QuoteItemsId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
                     Rate = table.Column<double>(nullable: false),
@@ -537,7 +537,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     QuoteItemsId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
                     Price = table.Column<double>(nullable: false),
@@ -560,7 +560,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     FeedbackCommentId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     ClientFeedbackId = table.Column<int>(nullable: false),
@@ -595,7 +595,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     CostEstimateItemId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     MaterialPrice = table.Column<double>(nullable: false),
                     MaterialPercentage = table.Column<double>(nullable: false),
                     LabourPrice = table.Column<double>(nullable: false),
@@ -620,7 +620,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     EmployeeTimelineId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     EmployeeId = table.Column<int>(nullable: true),
                     TimelineId = table.Column<int>(nullable: true),
                     ProjectId = table.Column<int>(nullable: true),
@@ -661,7 +661,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     ProjectContentId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ImagePath = table.Column<string>(nullable: true),
                     VoiceNotePath = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -698,7 +698,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     DefaultId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
@@ -727,7 +727,7 @@ namespace BaseAPI.Migrations
                 columns: table => new
                 {
                     InvoiceItemsId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
                     Rate = table.Column<double>(nullable: false),

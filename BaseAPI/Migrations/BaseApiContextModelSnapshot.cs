@@ -3,7 +3,6 @@ using System;
 using BaseAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BaseAPI.Migrations
@@ -16,14 +15,12 @@ namespace BaseAPI.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("BaseAPI.Models.External.Quotes.Quote", b =>
                 {
                     b.Property<int>("QuoteId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Date");
 
@@ -43,8 +40,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.External.Quotes.QuoteItems", b =>
                 {
                     b.Property<int>("QuoteItemsId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
@@ -66,8 +62,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.External.Suppliers.Supplier", b =>
                 {
                     b.Property<int>("SupplierId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address");
 
@@ -85,8 +80,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.External.Suppliers.SupplierAccount", b =>
                 {
                     b.Property<int>("SupplierAccountId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("BankAccount");
 
@@ -108,8 +102,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Finance.Accounts", b =>
                 {
                     b.Property<long>("AccountsId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("ClientId");
 
@@ -143,8 +136,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Finance.BaseAccount", b =>
                 {
                     b.Property<int>("BaseAccountId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<float>("amount");
 
@@ -164,8 +156,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Finance.MainAccount", b =>
                 {
                     b.Property<int>("mainAccountId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("BaseAccountId");
 
@@ -189,8 +180,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Finance.Transaction", b =>
                 {
                     b.Property<long>("TransactionId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<float>("amount");
 
@@ -214,8 +204,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Clients.Client", b =>
                 {
                     b.Property<int>("ClientId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address");
 
@@ -231,8 +220,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Clients.ClientContactInfo", b =>
                 {
                     b.Property<int>("ClientContactInfoId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AccessCode");
 
@@ -268,8 +256,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Clients.ClientFeedback", b =>
                 {
                     b.Property<int>("ClientFeedbackId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("ClientContactInfoId");
 
@@ -295,8 +282,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Clients.FeedbackComment", b =>
                 {
                     b.Property<int>("FeedbackCommentId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("ClientContactInfoId");
 
@@ -322,8 +308,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Employees.Employee", b =>
                 {
                     b.Property<int>("EmployeeId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AccessCode");
 
@@ -361,8 +346,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Employees.EmployeeAccounts", b =>
                 {
                     b.Property<int>("EmployeeAccountsId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AccountNumber");
 
@@ -382,8 +366,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Employees.EmployeeKin", b =>
                 {
                     b.Property<int>("EmployeeKinId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AlternativeNumber");
 
@@ -415,8 +398,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Employees.EmployeeRole", b =>
                 {
                     b.Property<int>("EmployeeRoleId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
@@ -430,8 +412,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.EmployeeTimeline", b =>
                 {
                     b.Property<int>("EmployeeTimelineId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Date");
 
@@ -459,8 +440,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.CostEstimates.CostEstimate", b =>
                 {
                     b.Property<int>("CostEstimateId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Date");
 
@@ -480,8 +460,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.CostEstimates.CostEstimateItem", b =>
                 {
                     b.Property<int>("CostEstimateItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("CostEstimateId");
 
@@ -507,8 +486,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.Defaults.Default", b =>
                 {
                     b.Property<int>("DefaultId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Date");
 
@@ -532,8 +510,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.Defaults.DefaultType", b =>
                 {
                     b.Property<int>("DefaultTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
@@ -545,8 +522,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.Invoices.Invoice", b =>
                 {
                     b.Property<int>("InvoiceId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
@@ -562,8 +538,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.Invoices.InvoiceItems", b =>
                 {
                     b.Property<int>("InvoiceItemsId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("DefaultId");
 
@@ -589,8 +564,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.Project", b =>
                 {
                     b.Property<int>("ProjectId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("ClientId");
 
@@ -612,8 +586,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.ProjectContent", b =>
                 {
                     b.Property<int>("ProjectContentId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("ClientContactInfoId");
 
@@ -643,8 +616,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.ProjectFile", b =>
                 {
                     b.Property<int>("ProjectFileId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("ClientContactInfoId");
 
@@ -672,8 +644,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.ProjectStatus", b =>
                 {
                     b.Property<int>("ProjectStatusId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
@@ -687,8 +658,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.Quotes.Quote", b =>
                 {
                     b.Property<int>("QuoteId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("ClientId");
 
@@ -706,8 +676,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.Quotes.QuoteItems", b =>
                 {
                     b.Property<int>("QuoteItemsId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
@@ -729,8 +698,7 @@ namespace BaseAPI.Migrations
             modelBuilder.Entity("BaseAPI.Models.Internal.Projects.Timeline", b =>
                 {
                     b.Property<int>("TimelineId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 

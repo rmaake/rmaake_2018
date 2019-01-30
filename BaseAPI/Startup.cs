@@ -65,7 +65,8 @@ namespace BaseAPI
             services.AddScoped<IFeedbackCommentRepo, FeedbackCommentRepo>();
             services.AddScoped<IEmployeeRoleRepo, EmployeeRoleRepo>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddDbContext<BaseApiContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("aws")));
+            // services.AddDbContext<BaseApiContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("aws")));
+            services.AddDbContext<BaseApiContext>(opt => opt.UseMySql(Configuration.GetConnectionString("aws")));
             services.AddScoped<IMailService, MailService>();
             services.AddSingleton<IMailConfig>(Configuration.GetSection("EmailConfiguration").Get<MailConfig>());
             services.AddTransient<IMailService, MailService>();
