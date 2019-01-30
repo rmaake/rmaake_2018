@@ -1,0 +1,1 @@
+dotnet lambda deploy-serverless -c Release -sn my-service-dev -t serverless.template -sb my-service-dev-serverlessdeploymentbucket-f8yxix4jd0ml --region us-east-1

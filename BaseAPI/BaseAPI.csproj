@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AWSProjectType>Lambda</AWSProjectType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20181205132626_fourth.cs" />
+    <Compile Remove="Migrations\20181205132626_fourth.Designer.cs" />
+    <Compile Remove="Migrations\20181205134833_fouth.cs" />
+    <Compile Remove="Migrations\20181205134833_fouth.Designer.cs" />
+    <Compile Remove="Migrations\20190126123555_new.cs" />
+    <Compile Remove="Migrations\20190126123555_new.Designer.cs" />
+    <Compile Remove="Migrations\20190129072619_feedback.cs" />
+    <Compile Remove="Migrations\20190129072619_feedback.Designer.cs" />
+    <Compile Remove="Migrations\20190129073744_feeback2.cs" />
+    <Compile Remove="Migrations\20190129073744_feeback2.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Internal\Finances\" />
+    <Folder Include="Models\Internal\Finances\" />
+    <Folder Include="Repository\Internal\Finances\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.5" /> -->
+    <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="2.1.0" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.6" />
+    <PackageReference Include="AWSSDK.S3" Version="3.3.30" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.4" />
+    <PackageReference Include="Select.HtmlToPdf.NetCore" Version="18.4.0" />
+    <DotNetCliToolReference Include="Amazon.Lambda.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+</Project>

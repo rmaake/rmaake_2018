@@ -1,0 +1,10 @@
+
+{
+    "region" : "us-east-1",
+    "profile" : "default",
+    "configuration" : "Release",
+    "framework"     : "netcoreapp2.1",
+    "s3-bucket"     : "my-service-dev-serverlessdeploymentbucket-f8yxix4jd0ml",
+    "template"      : "serverless.template",
+    "stack-name"    : "my-service-dev"
+}
