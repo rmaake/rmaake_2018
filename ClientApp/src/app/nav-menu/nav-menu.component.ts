@@ -14,7 +14,7 @@ export class NavMenuComponent {
   employee = new Employee();
   client = new ClientContact();
   user = 0;
-  url = environment.apiURI;
+  url = environment.apiUrl;
   constructor(private auth: AuthService) {
     this.auth.isLoggedIn.subscribe(resp => {
       if (resp == 1)

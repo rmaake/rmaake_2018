@@ -18,7 +18,7 @@ export class EmployeeProfileComponent implements OnInit {
   confirmPassword: string;
   progress: number;
   message: string;
-  url = environment.apiURI;
+  url = environment.apiUrl;
   constructor(private service: EmployeeProfileService, private router: Router) {
     this.passwordChange = new PasswordChange();
     this.confirmPassword = "";

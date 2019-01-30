@@ -40,12 +40,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 import { EmployeeProfileService } from './services/employeeProfile.service';
-<<<<<<< HEAD
 import { BaseTemplateComponent } from './base-template/base-template.component';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
-=======
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
->>>>>>> 959aab16583a1e4858d5a4f05157597cef6490bc
 
 @NgModule({
   declarations: [
@@ -77,14 +73,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     NotFoundComponent,
     NotAuthorizedComponent,
     EmployeeProfileComponent,
-<<<<<<< HEAD
     LoginComponent,
     BaseTemplateComponent,
     UnderConstructionComponent
-=======
-    ForgotPasswordComponent,
-    LoginComponent
->>>>>>> 959aab16583a1e4858d5a4f05157597cef6490bc
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -125,7 +116,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
       { path: 'logout', component: LogoutComponent },
       { path: 'access-control', component: NotAuthorizedComponent },
       { path: 'employee-profile', component: EmployeeProfileComponent },
-      { path: 'forgot-password', component: ForgotPasswordComponent },
+      // { path: 'forgot-password', component: ForgotPasswordComponent },
       { path: '**', component: NotFoundComponent },
     ])
   ],
