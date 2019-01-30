@@ -1,0 +1,27 @@
+.list {
+  height: calc(100% - 5px);
+  background-color: white;
+  padding: 10px;
+  overflow: auto;
+}
+
+h6 {
+  margin: 10px;
+  text-align: center;
+}
+
+.main-content {
+  margin-bottom: 20px;
+}
+
+.delete {
+  width: 150px;
+  border: none;
+  background-color: #FC3636;
+  color: #EBEBEB;
+  border-radius: 2PX;
+}
+.header {
+  background-color: #227093;
+  color: azure;
+}

@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="header well">
+      <h2>Admin: Employee management</h2>
+      <p>This is where you can manage employees, i.e. their personal info and access codes</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <caption style="text-align:center; font-size:25px;">Employee List</caption>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Contact number</th>
+            <th>Alternative Number</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees" >
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.contactNumber}}</td>
+            <td>{{employee.alternativeNumber}}</td>
+            <td>{{employee.email}}</td>
+            <td><button class="btn btn-primary btn-small" (click)="toEdit(employee.employeeId)">Edit / View</button></td>
+            <td><button class="btn btn-danger btn-small" (click)="toDelete(employee.employeeId)"  data-toggle="modal" data-target="#confirm">Remove</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button class="btn btn-primary btn-small" (click)="toAdd()">Add</button></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    
+  </div>
+</div>

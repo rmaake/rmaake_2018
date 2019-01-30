@@ -1,0 +1,17 @@
+.header {
+  background-color: #227093;
+  color: azure;
+}
+
+h4 {
+  text-align: center;
+}
+
+.admin-card {
+  text-align: center;
+}
+
+.dashboard-img {
+  height: 30px;
+  width: 30px;
+}

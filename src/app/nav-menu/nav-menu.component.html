@@ -1,0 +1,107 @@
+<div class='main-nav' style="z-index: 9999999">
+    <div class='navbar navbar-inverse'>
+        <div class='navbar-header'>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded' (click)='toggle()'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' [routerLink]='["/"]'>NRP PORTAL</a>
+        </div>
+        <div class='clearfix'></div>
+        <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
+          <ul class='nav navbar-nav' *ngIf="user == 2">
+            <li>
+              <div class="row" style="color:azure;">
+                <div class="col-sm-12" style="text-align:center">
+                  <img src="assets/profile.png" class="nav-img" /><p>{{employee.firstName}} {{employee.lastName}}</p>
+                </div>
+              </div>
+            </li>
+            <br />
+            <li class="menu-header" style="font-size:10px;">DASHBOARD</li>
+            <br />
+            <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/dashboard.png" class="nav-link-img" /></span> Dashboard
+              </a>
+            </li>
+            <br />
+            <li class="menu-header" style="font-size:10px;">MENU</li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/project"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/project.png" class="nav-link-img" /></span>  Projects
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/finance"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/finance.png" class="nav-link-img" /></span> Finance
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/quotes"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/quote.png" class="nav-link-img" /></span> Quotes
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/rfq"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/quote.png" class="nav-link-img" /></span> RFQs
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/reports"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/report.png" class="nav-link-img" /></span> Reports
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/admin"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/admin.png" class="nav-link-img" /></span> Admin
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/logout"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/logout.png" class="nav-link-img" /></span> Sign Out
+              </a>
+            </li>
+          </ul>
+
+          <!--Nav Menu for clients-->
+          <ul class='nav navbar-nav' *ngIf="user == 1">
+            <li>
+              <div class="row" style="color:azure;">
+                <div class="col-sm-12" style="text-align:center">
+                  <img src="assets/profile.png" class="nav-img" /><p>{{client.firstName}} {{client.lastName}}</p>
+                </div>
+              </div>
+            </li>
+            <br />
+            <li class="menu-header" style="font-size:10px;">DASHBOARD</li>
+            <br />
+            <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/dashboard.png" class="nav-link-img" /></span> Dashboard
+              </a>
+            </li>
+            <br />
+            <li class="menu-header" style="font-size:10px;">MENU</li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/client-project"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/project.png" class="nav-link-img" /></span>  Projects
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/client-feedback"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/feedback.png" class="nav-link-img" /></span> Feedback
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/logout"]' (click)='collapse()'>
+                <span class='glyphicon'><img src="assets/logout.png" class="nav-link-img" /></span> Sign Out
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+</div>
+

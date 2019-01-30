@@ -1,0 +1,168 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="header well">
+      <h2>Project Information</h2>
+      <p>Add or Update project information</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="nav nav-tabs">
+      <li id="0" class="active"><a (click)="switchTab(0)">Project Information</a></li>
+      <li id="2"><a (click)="switchTab(2)">Project Managers</a></li>
+      <li id="1"><a (click)="switchTab(1)">Project Timeline</a></li>
+
+
+    </ul>
+    <!--Projects tab-->
+    <div id="menu0" class="tab-pane " *ngIf="tabNumber == 0 && ready">
+      <div class="main-login main-center col-md-9">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Project Name:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="projectName" id="projectname" placeholder="Enter project name" [(ngModel)]="project.title" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Choose Client:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-star-empty" aria-hidden="true"></i></span>
+                <select class="form-control" name="client" [(ngModel)]="project.clientId">
+                  <option disabled selected value="0">Choose client for this project</option>
+                  <option *ngFor="let client of clients" [value]="client.clientId">{{client.clientName}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Facility:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="facility" id="facility" placeholder="Enter facility or project address" [(ngModel)]="project.facility" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Description:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-tasks" aria-hidden="true"></i></span>
+                <textarea type="text" class="form-control" name="description" id="description" placeholder="What's the project about?" [(ngModel)]="project.description" style="resize:none;"></textarea>
+              </div>
+            </div>
+          </div>
+          <br />
+        </form>
+      </div>
+    </div>
+    <!--Projects tab-->
+    <div id="menu1" class="tab-pane " *ngIf="tabNumber == 1 && ready">
+      <div class="main-login main-center col-md-9">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Stage:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="stage" id="stage" placeholder="Enter stage" [(ngModel)]="timeline.stage" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Choose status:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-star-empty" aria-hidden="true"></i></span>
+                <select class="form-control" name="status" [(ngModel)]="timeline.projectStatusId" (change)="statusChange($event.target.value)">
+                  <option disabled selected value="0">Choose project status</option>
+                  <option *ngFor="let state of status" [value]="state.projectStatusId">{{state.stage}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Description:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-tasks" aria-hidden="true"></i></span>
+                <textarea type="text" class="form-control" name="description" id="description" placeholder="What's the stage about?" [(ngModel)]="timeline.description" style="resize:none;"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Start Date:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i></span>
+                <input type="date" class="form-control" name="start" id="start" [ngModel]="timeline.startDate | date: 'yyyy-MM-dd'" (change)="changeDate(1, $event)" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">End Date:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i></span>
+                <input type="date" class="form-control" name="end" id="end" [ngModel]="timeline.endDate | date: 'yyyy-MM-dd' " (change)="changeDate(2, $event)" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Extension Date:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i></span>
+                <input type="date" class="form-control" name="extension" id="extension" [ngModel]="timeline.extension | date: 'yyyy-MM-dd'" (change)="changeDate(3, $event)" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn btn-success btn-md" (click)="submit()" [disabled]="sent">Save and Submit</button>
+          </div>
+          <br />
+        </form>
+      </div>
+    </div>
+    <!--Project Managers-->
+    <div id="menu0" class="tab-pane " *ngIf="tabNumber == 2 && ready">
+      <div class="main-login main-center col-md-9">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Project Manager:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                <select class="form-control" name="status" [(ngModel)]="projectManager.employeeId" (change)="statusChange($event.target.value)">
+                  <option disabled selected value="0">Choose Project Manager</option>
+                  <option *ngFor="let employee of employees" [value]="employee.employeeId">{{employee.firstName}} {{employee.lastName}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Site Manager:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                <select class="form-control" name="siteManager" [(ngModel)]="siteManager.employeeId" (change)="statusChange($event.target.value)">
+                  <option disabled selected value="0">Choose Site Manager</option>
+                  <option *ngFor="let employee of employees" [value]="employee.employeeId">{{employee.firstName}} {{employee.lastName}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

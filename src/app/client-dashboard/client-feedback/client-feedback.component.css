@@ -1,0 +1,26 @@
+.header {
+  background-color: #227093;
+  color: azure;
+}
+
+.gallery-img {
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+}
+.active{
+  background-color:aliceblue;
+}
+.inactive{
+  color:blueviolet;
+}
+.client{
+  background-color: darkcyan;
+  color:azure;
+  text-align:right;
+}
+.nrp{
+  background-color:cornflowerblue;
+  color:azure;
+  text-align: left;
+}

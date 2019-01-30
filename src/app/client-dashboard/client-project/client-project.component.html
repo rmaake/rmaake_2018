@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="header well">
+      <h2>Project List</h2>
+      <p>This is where you can see your projects with  NRP</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <h4><b>Summary</b></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="admin-card">
+      <h2 style="color:green">{{activeProjects}}</h2>
+      <p><b>Active projects</b></p>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="admin-card">
+      <h2 style="color:blue">{{pendingProjects}}</h2>
+      <p><b>Pending projects</b></p>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="admin-card">
+      <h2 style="color:red">{{overdueProjects}}</h2>
+      <p><b>Overdue projects</b></p>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="admin-card">
+      <h2>{{completedProjects}}</h2>
+      <p><b>Completed projects</b></p>
+    </div>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-sm-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <caption style="text-align:center; font-size:25px;">Project List</caption>
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Client Name</th>
+            <th>Facility</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="ready">
+          <tr *ngFor="let proj of projects">
+            <td>{{proj.title}}</td>
+            <td>{{proj.client.clientName}}</td>
+            <td>{{proj.facility}}</td>
+            <td><img src="assets/{{getProjectStatus(proj.projectId)}}.png" class="dashboard-img" /></td>
+            <td><button class="btn btn-primary btn-small" (click)="toView(proj.projectId)">View</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

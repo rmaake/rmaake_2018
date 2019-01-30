@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="header well">
+      <h2>Admin: Client management</h2>
+      <p>This is where you can manage clients</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <caption style="text-align:center; font-size:25px;">Client List</caption>
+        <thead>
+          <tr>
+            <th>Client Name</th>
+            <th>Vat Number</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of clients">
+            <td>{{client.clientName}}</td>
+            <td>{{client.vatNumber}}</td>
+            <td>{{client.address}}</td>
+            <td><button class="btn btn-primary btn-small" (click)="toEdit(client.clientId)">Edit / View</button></td>
+            <td><button class="btn btn-danger btn-small" (click)="toDelete(client.clientId)" data-toggle="modal" data-target="#confirm">Remove</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button class="btn btn-primary btn-small" (click)="toAdd()">Add</button></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div>
+</div>

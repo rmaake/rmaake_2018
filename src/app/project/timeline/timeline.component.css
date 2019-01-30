@@ -1,0 +1,9 @@
+.header {
+  background-color: #227093;
+  color: azure;
+}
+.gallery-img{
+  width:80px;
+  height: 80px;
+  padding:10px;
+}

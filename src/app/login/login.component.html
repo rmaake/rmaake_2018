@@ -1,0 +1,19 @@
+<body>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <img src="assets/login_black.png" id="icon" />
+        <h3>NRP PORTAL</h3><br>
+        <h5>LOGIN AS</h5>
+      </div>
+      <form>
+        <input type="text"  id="login" class="fadeIn second" name="login" placeholder="username" [(ngModel)]="user.username" required>
+        <input type="password"  id="password" class="fadeIn third" name="login" placeholder="password" [(ngModel)]="user.password"required>
+        <br/><span style="color:red;" *ngIf="status == -1">Invalid username and password</span>
+        <span style="color:green;" *ngIf="status == 1">Signing In...</span>
+        <button class="fadeIn fourth" (click)="employeeSignIn()">EMPLOYEE</button>
+        <button class="fadeIn fourth" (click)="clientSignIn()">CLIENT</button>
+      </form>
+    </div>
+  </div>
+</body>

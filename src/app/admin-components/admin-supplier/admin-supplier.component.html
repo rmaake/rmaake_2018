@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="header well">
+      <h2>Admin: Supplier management</h2>
+      <p>This is where you can manage suppliers</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <caption style="text-align:center; font-size:25px;">Supplier List</caption>
+        <thead>
+          <tr>
+            <th>Supplier Name</th>
+            <th>Contact number</th>
+            <th>Email</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let supplier of suppliers">
+            <td>{{supplier.name}}</td>
+            <td>{{supplier.tell}}</td>
+            <td>{{supplier.email}}</td>
+            <td>{{supplier.address}}</td>
+            <td><button class="btn btn-primary btn-small" (click)="toEdit(supplier.supplierId)">Edit / View</button></td>
+            <td><button class="btn btn-danger btn-small" (click)="toDelete(supplier.supplierId)" data-toggle="modal" data-target="#confirm">Remove</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button class="btn btn-primary btn-small" (click)="toAdd()">Add</button></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div>
+</div>

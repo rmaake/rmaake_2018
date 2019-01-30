@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="header well">
+      <h2>Project Information</h2>
+      <p>Get an overall of the project</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 ">
+    <div class="main-login main-center well">
+      <h4 style="text-align:center">Snag</h4>
+      <hr />
+      <form class="form-horizontal ">
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">Title:</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="stage" id="stage" placeholder="Enter title" [(ngModel)]="snag.title" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">Description:</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-tasks" aria-hidden="true"></i></span>
+              <textarea type="text" class="form-control" name="description" id="description" placeholder="Give a description of the snag" [(ngModel)]="snag.description" style="resize:none; height:200px;"></textarea>
+            </div>
+          </div>
+        </div>
+        <br />
+      </form>
+    </div>
+
+  </div>
+  <div class="col-sm-6 ">
+    <div class="main-login main-center well">
+      <h4 style="text-align:center">Content Description</h4>
+      <hr />
+      <form class="form-horizontal ">
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">Description:</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-tasks" aria-hidden="true"></i></span>
+              <textarea type="text" class="form-control" name="description" id="description" placeholder="Describe the file about to be uploaded" [(ngModel)]="content.description" style="resize:none; height:200px;"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">Upload file:</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-upload" aria-hidden="true"></i></span>
+              <input #file type="file" class="form-control" name="start" id="start" multiple (change)="snageChange(file.files)"/>
+            </div>
+          </div>
+        </div>
+
+      </form>
+      <p>Uploading... {{progress}}%</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <button class="btn btn-success btn-md" (click)="submit()" [disabled]="content.imagePath.length < 1">Save and Submit</button>
+</div>
+<br />

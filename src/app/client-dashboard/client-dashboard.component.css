@@ -1,0 +1,26 @@
+.header {
+  background-color: #5b80a4;
+  color: azure;
+}
+
+/*divs setup*/
+.dashboard-project {
+  text-align: center;
+  background-color: #ffb54d;
+}
+.dashboard-Feedback {
+  text-align: center;
+  background-color: #227093;
+}
+
+.dashboard-img {
+  height: 30px;
+  width: 30px;
+}
+/*div hovers*/
+.dashboard-project :hover {
+  color: antiquewhite;
+}
+.dashboard-Feedback :hover {
+  color: antiquewhite;
+}

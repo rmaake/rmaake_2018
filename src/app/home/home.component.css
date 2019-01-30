@@ -1,0 +1,54 @@
+.header {
+  background-color: #5b80a4;
+  color: azure;
+}
+
+/*divs setup*/
+.dashboard-project {
+  text-align:center;
+  background-color: #ffb54d;
+}
+.dashboard-rfq {
+  text-align: center;
+  background-color: #e74c3c;
+}
+.dashboard-report {
+  text-align: center;
+  background-color: #9b59b6;
+}
+.dashboard-finance {
+  text-align: center;
+  background-color: #227093;
+}
+.dashboard-quote {
+  text-align: center;
+  background-color: #33d9b2;
+}
+.dashboard-admin {
+  text-align: center;
+  background-color: #227093;
+}
+
+.dashboard-img{
+  height:30px;
+  width: 30px;
+}
+/*div hovers*/
+.dashboard-project :hover {
+  color: antiquewhite;
+}
+.dashboard-report :hover {
+  color: antiquewhite;
+}
+.dashboard-rfq :hover {
+  color: antiquewhite;
+}
+.dashboard-quote :hover {
+  color: antiquewhite;
+}
+.dashboard-finance :hover {
+  color: antiquewhite;
+}
+.dashboard-admin :hover {
+  color: antiquewhite;
+}

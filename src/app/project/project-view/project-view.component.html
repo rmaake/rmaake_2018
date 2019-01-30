@@ -1,0 +1,158 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="header well">
+      <h2>Project Information</h2>
+      <p>Get an overall of the project</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="info well">
+      <p>Client Name: <b>{{client.clientName}}</b></p>
+      <p>Contact Person: <b>{{contact.firstName}} {{contact.lastName}}</b></p>
+      <p>Contact Number:<b>{{contact.cell}} / {{contact.tell}}</b></p>
+      <br />
+      <p>Project Duration: <b>{{duration.startDate | date:'dd/MM/yyy' }} - {{duration.endDate | date:'dd/MM/yyyy'}} </b> </p>
+      <p>Site Manager: <b>{{sManager.firstName}} {{sManager.lastName}}</b></p>
+      <p>Project Manager <b>{{pManager.firstName}} {{pManager.lastName}}</b></p>
+      <button class="btn btn-primary" (click)="toEdit(id)" style="padding:5px;">Edit Project</button>
+      <br />
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="info well">
+      <h5>Project Progress</h5>
+      <div class="progress">
+        <div class="progress-bar bg-success" id="progressBar2" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          {{projectProgress}}%
+        </div>
+      </div>
+      <br />
+      <h5>Duration Progress</h5>
+      <div class="progress">
+        <div class="progress-bar bg-success" id="progressBar" role="progressbar"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          {{durationProgress}}%
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="nav nav-tabs">
+      <li id="0" class="active"><a (click)="switchTab(0)">Project Timelines</a></li>
+      <li id="1"><a (click)="switchTab(1)">Project Files</a></li>
+      <!--<li id="2"><a (click)="switchTab(2)">Project Managers</a></li>-->
+
+    </ul>
+    <!--Timeline tab-->
+    <div id="menu0" class="tab-pane " *ngIf="tabNumber == 0">
+      <div class="col-sm-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <!--<caption style="text-align:center; font-size:25px;">Project List</caption>-->
+            <thead>
+              <tr>
+                <th>Stage</th>
+                <th>Progress</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let time of timeline">
+                <td>{{time.stage}}</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" id="progress{{time.timelineId}}" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                      {{getTimelineProgress('progress' + time.timelineId.toString(), time.startDate, time.endDate)}}%
+                    </div>
+                  </div>
+                </td>
+                <td><img src="assets/{{getProjectStatus(time.timelineId)}}.png" class="dashboard-img" /></td>
+                <td><button class="btn btn-primary btn-small" (click)="toViewTimeline(time.timelineId)">Edit / View</button></td>
+                <td><button class="btn btn-danger btn-small" (click)="toDeleteTimeline(time.timelineId)" data-toggle="modal" data-target="#confirm">Remove</button></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-primary btn-small" (click)="toAddTimeline()">Add</button></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--Projects tab-->
+    <div id="menu1" class="tab-pane " *ngIf="tabNumber == 1">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <caption style="text-align:center; font-size:25px;">Uploaded Files</caption>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Creation Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let co of contents">
+                  <td>{{co.projectFileId}}</td>
+                  <td>{{co.description}}</td>
+                  <td>{{co.date | date: 'dd/MM/yyyy HH:MM'}}</td>
+                  <td><a class="btn btn-primary btn-small" href="http://localhost:55079/{{co.filePath}}" download="{{co.filePath.split('/')[1]}}">Download</a></td>
+
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="main-login main-center col-md-9">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Title:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="stage" id="stage" placeholder="Enter quote title" [(ngModel)]="content.description" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Choose a quote file:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-upload" aria-hidden="true"></i></span>
+                  <input #file type="file" class="form-control" name="fil" id="fil" multiple (change)="fileChange(file.files)" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <button class="btn btn-success btn-md" (click)="submit()" [disabled]="sent">Save and Submit</button>
+            </div>
+            <br />
+          </form>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

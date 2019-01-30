@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="header well">
+      <h2>Project Details</h2>
+      <p>This is where you can see details of the project</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="info well">
+      <p>Client Name: <b>{{client.clientName}}</b></p>
+      <p>Contact Person: <b>{{contact.firstName}} {{contact.lastName}}</b></p>
+      <p>Contact Number:<b>{{contact.cell}} / {{contact.tell}}</b></p>
+      <br />
+      <p>Project Duration: <b>{{duration.startDate | date:'dd/MM/yyy' }} - {{duration.endDate | date:'dd/MM/yyyy'}} </b> </p>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="info well">
+      <h5>Project Progress</h5>
+      <div class="progress">
+        <div class="progress-bar bg-success" id="progressBar2" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          {{projectProgress}}%
+        </div>
+      </div>
+      
+      <h5>Duration Progress</h5>
+      <div class="progress">
+        <div class="progress-bar bg-success" id="progressBar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          {{durationProgress}}%
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <caption style="text-align:center; font-size:25px;">Project Timelines</caption>
+        <caption>
+          <div class="row">
+            <div class="col-sm-3"><img src="assets/active.png" class="dashboard-img" /> Active timeline</div>
+            <div class="col-sm-3"><img src="assets/pending.png" class="dashboard-img"/> Pending timeline</div>
+            <div class="col-sm-3"><img src="assets/overdue.png" class="dashboard-img"/> Overdue timeline</div>
+            <div class="col-sm-3"><img src="assets/completed.png" class="dashboard-img"/> Completed timeline</div>
+          </div>
+        </caption>
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Progress</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let time of timeline">
+            <td>{{time.stage}}</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar bg-success" id="progress{{time.timelineId}}" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                  {{getTimelineProgress('progress' + time.timelineId.toString(), time.startDate, time.endDate)}}%
+                </div>
+              </div>
+            </td>
+            <td><img src="assets/{{getProjectStatus(time.timelineId)}}.png" class="dashboard-img" /></td>
+            <td><button class="btn btn-primary btn-small" (click)="toViewTimeline(time.timelineId)">View</button></td>
+            
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+           
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

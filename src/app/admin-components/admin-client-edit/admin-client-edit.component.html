@@ -1,0 +1,111 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="header well">
+      <h2 style="color:white">Client Information</h2>
+      <p style="color:white">Add, update or remove client info</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="nav nav-tabs">
+      <li id="0" class="active"><a (click)="switchTab(0)">Client</a></li>
+      <li id="1"><a (click)="switchTab(1)">Client's Contact Person</a></li>
+      
+    </ul>
+    <!--Tab: Client-->
+    <div id="menu0" class="tab-pane " *ngIf="tabNumber == 0">
+      <div class="main-login main-center col-md-9">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Client Name:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="clientName" id="clientname" placeholder="Enter client name" [(ngModel)]="client.clientName" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">VAT Number:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="vatNumber" id="vatnumber" placeholder="Enter client VAT Number" [(ngModel)]="client.vatNumber" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Physical Address:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="physicalAdress" id="physicalAddress" placeholder="Enter client address" [(ngModel)]="client.address" />
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <!--Tab: Client's Contact Person-->
+    <div id="menu1" class="tab-pane " *ngIf="tabNumber == 1">
+      <div class="main-login main-center col-md-9">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">First Name(s):</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="firstName" id="firstname" placeholder="Enter first name" [(ngModel)]="contact.firstName" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Last Name:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="lastName" id="lastname" placeholder="Enter last name" [(ngModel)]="contact.lastName" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Contact Number:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-phone" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="contact" id="contactnumber" placeholder="Enter contact number" [(ngModel)]="contact.cell" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Telephone:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="alternative" id="username" placeholder="Enter telephone" [(ngModel)]="contact.tell" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="cols-sm-2 control-label">Email:</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="	glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="email" id="email" placeholder="Enter email address" [(ngModel)]="contact.email" />
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <button class="btn btn-success btn-md" (click)="submit()" [disabled]="sent">Save and Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+  </div>
+</div>

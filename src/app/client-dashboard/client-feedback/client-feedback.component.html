@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="header well">
+      <h2>FeedBack</h2>
+      <p>This is where you can see, post and update feedback</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="well" style="background-color:cadetblue;">
+      <h5>Feedback Titles</h5>
+      <hr />
+      <div style="height: 560px; overflow-y: auto; ">
+        <ul class="nav navbar-nav">
+          <li *ngFor="let feed of feedbacks" class="inactive"><a class="inactive" id="{{feed.clientFeedbackId}}" (click)="switchTab(feed.clientFeedbackId)">{{feed.title}} <b>{{feed.date |date: 'dd/MM/yyyy'}}</b></a><hr /></li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <div class="well">
+      <h3>Feedback Replies | <a class="btn btn-primary" href="http://localhost:55079/{{selected.imagePath}}" target="_blank">View Image</a></h3>
+      <div class="row" style="height: 400px; overflow-y: auto;">
+        <div class="well">
+          <div *ngFor="let comment of selectedComments" class="well {{comment.className}}">
+            <h4><b>{{getName(comment)}}:</b> {{comment.date | date: 'dd/MM/yyyy HH:MM'}}</h4>
+            <p>{{comment.description}}</p>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="well">
+          <textarea style="height:50px; width:100%; resize:none;" name="comment" [(ngModel)]="comment.description"></textarea>
+          <button class="btn btn-success btn-large" (click)="submit()">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
