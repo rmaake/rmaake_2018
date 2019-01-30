@@ -40,6 +40,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 import { EmployeeProfileService } from './services/employeeProfile.service';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { EmployeeProfileService } from './services/employeeProfile.service';
     NotFoundComponent,
     NotAuthorizedComponent,
     EmployeeProfileComponent,
+    ForgotPasswordComponent,
     LoginComponent
   ],
   imports: [
@@ -112,6 +114,7 @@ import { EmployeeProfileService } from './services/employeeProfile.service';
       { path: 'logout', component: LogoutComponent },
       { path: 'access-control', component: NotAuthorizedComponent },
       { path: 'employee-profile', component: EmployeeProfileComponent },
+      { path: 'forgot-password', component: ForgotPasswordComponent },
       { path: '**', component: NotFoundComponent },
     ])
   ],

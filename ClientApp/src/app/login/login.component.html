@@ -12,7 +12,8 @@
         <br/><span style="color:red;" *ngIf="status == -1">Invalid username and password</span>
         <span style="color:green;" *ngIf="status == 1">Signing In...</span>
         <button class="fadeIn fourth" (click)="employeeSignIn()">EMPLOYEE</button>
-        <button class="fadeIn fourth" (click)="clientSignIn()">CLIENT</button>
+        <button class="fadeIn fourth" (click)="clientSignIn()">CLIENT</button><br />
+        <a [routerLink]='["/forgot-password"]'  class="fadeIn fourth">Forgot Password</a>
       </form>
     </div>
   </div>
