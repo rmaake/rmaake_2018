@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BaseAPI.Migrations
 {
-    public partial class first : Migration
+    public partial class fixMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,6 +54,20 @@ namespace BaseAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EmployeeRoles",
+                columns: table => new
+                {
+                    EmployeeRoleId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeRoles", x => x.EmployeeRoleId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
                 {
@@ -71,27 +85,12 @@ namespace BaseAPI.Migrations
                     Email = table.Column<string>(nullable: true),
                     Username = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
+                    ImagePath = table.Column<string>(nullable: true),
                     AccessCode = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Employees", x => x.EmployeeId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ExternalQuotes",
-                columns: table => new
-                {
-                    QuoteId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ReferenceNumber = table.Column<string>(nullable: true),
-                    Discount = table.Column<double>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false),
-                    SupplierId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ExternalQuotes", x => x.QuoteId);
                 });
 
             migrationBuilder.CreateTable(
@@ -163,6 +162,7 @@ namespace BaseAPI.Migrations
                     Password = table.Column<string>(nullable: true),
                     AccessCode = table.Column<string>(nullable: true),
                     AcquisitionNumber = table.Column<string>(nullable: true),
+                    ImagePath = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     ClientId = table.Column<int>(nullable: false)
                 },
@@ -171,6 +171,29 @@ namespace BaseAPI.Migrations
                     table.PrimaryKey("PK_ClientContactInfos", x => x.ClientContactInfoId);
                     table.ForeignKey(
                         name: "FK_ClientContactInfos_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "ClientId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    ProjectId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(nullable: true),
+                    Facility = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    ClientId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.ProjectId);
+                    table.ForeignKey(
+                        name: "FK_Projects_Clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "Clients",
                         principalColumn: "ClientId",
@@ -196,29 +219,6 @@ namespace BaseAPI.Migrations
                         principalTable: "Clients",
                         principalColumn: "ClientId",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Defaults",
-                columns: table => new
-                {
-                    DefaultId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(nullable: true),
-                    Cost = table.Column<double>(nullable: false),
-                    StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false),
-                    DefaultTypeId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Defaults", x => x.DefaultId);
-                    table.ForeignKey(
-                        name: "FK_Defaults_DefaultTypes_DefaultTypeId",
-                        column: x => x.DefaultTypeId,
-                        principalTable: "DefaultTypes",
-                        principalColumn: "DefaultTypeId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -272,25 +272,24 @@ namespace BaseAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExternalQuoteItems",
+                name: "ExternalQuotes",
                 columns: table => new
                 {
-                    QuoteItemsId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(nullable: true),
-                    Quantity = table.Column<int>(nullable: false),
-                    Price = table.Column<double>(nullable: false),
-                    Vat = table.Column<double>(nullable: false),
                     QuoteId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ReferenceNumber = table.Column<string>(nullable: true),
+                    Discount = table.Column<double>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    SupplierId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExternalQuoteItems", x => x.QuoteItemsId);
+                    table.PrimaryKey("PK_ExternalQuotes", x => x.QuoteId);
                     table.ForeignKey(
-                        name: "FK_ExternalQuoteItems_ExternalQuotes_QuoteId",
-                        column: x => x.QuoteId,
-                        principalTable: "ExternalQuotes",
-                        principalColumn: "QuoteId",
+                        name: "FK_ExternalQuotes_ExternalSuppliers_SupplierId",
+                        column: x => x.SupplierId,
+                        principalTable: "ExternalSuppliers",
+                        principalColumn: "SupplierId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -315,36 +314,6 @@ namespace BaseAPI.Migrations
                         principalTable: "ExternalSuppliers",
                         principalColumn: "SupplierId",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Projects",
-                columns: table => new
-                {
-                    ProjectId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
-                    Facility = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false),
-                    ClientId = table.Column<int>(nullable: false),
-                    ProjectStatusId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Projects", x => x.ProjectId);
-                    table.ForeignKey(
-                        name: "FK_Projects_Clients_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "Clients",
-                        principalColumn: "ClientId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Projects_ProjectStatuses_ProjectStatusId",
-                        column: x => x.ProjectStatusId,
-                        principalTable: "ProjectStatuses",
-                        principalColumn: "ProjectStatusId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -401,25 +370,27 @@ namespace BaseAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "QuoteItems",
+                name: "ClientFeedbacks",
                 columns: table => new
                 {
-                    QuoteItemsId = table.Column<int>(nullable: false)
+                    ClientFeedbackId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(nullable: true),
+                    ImagePath = table.Column<string>(nullable: true),
+                    VoiceNotePath = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Quantity = table.Column<int>(nullable: false),
-                    Rate = table.Column<double>(nullable: false),
-                    Vat = table.Column<double>(nullable: false),
-                    QuoteId = table.Column<int>(nullable: false)
+                    Date = table.Column<DateTime>(nullable: false),
+                    TimelineId = table.Column<int>(nullable: true),
+                    ClientContactInfoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_QuoteItems", x => x.QuoteItemsId);
+                    table.PrimaryKey("PK_ClientFeedbacks", x => x.ClientFeedbackId);
                     table.ForeignKey(
-                        name: "FK_QuoteItems_Quotes_QuoteId",
-                        column: x => x.QuoteId,
-                        principalTable: "Quotes",
-                        principalColumn: "QuoteId",
+                        name: "FK_ClientFeedbacks_ClientContactInfos_ClientContactInfoId",
+                        column: x => x.ClientContactInfoId,
+                        principalTable: "ClientContactInfos",
+                        principalColumn: "ClientContactInfoId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -471,6 +442,42 @@ namespace BaseAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProjectFiles",
+                columns: table => new
+                {
+                    ProjectFileId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FilePath = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    ProjectId = table.Column<int>(nullable: false),
+                    EmployeeId = table.Column<int>(nullable: true),
+                    ClientContactInfoId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectFiles", x => x.ProjectFileId);
+                    table.ForeignKey(
+                        name: "FK_ProjectFiles_ClientContactInfos_ClientContactInfoId",
+                        column: x => x.ClientContactInfoId,
+                        principalTable: "ClientContactInfos",
+                        principalColumn: "ClientContactInfoId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProjectFiles_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "EmployeeId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProjectFiles_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "ProjectId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Timelines",
                 columns: table => new
                 {
@@ -478,6 +485,7 @@ namespace BaseAPI.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Stage = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
+                    OverallTimeline = table.Column<bool>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
                     EndDate = table.Column<DateTime>(nullable: false),
                     Extension = table.Column<DateTime>(nullable: true),
@@ -502,6 +510,87 @@ namespace BaseAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "QuoteItems",
+                columns: table => new
+                {
+                    QuoteItemsId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(nullable: true),
+                    Quantity = table.Column<int>(nullable: false),
+                    Rate = table.Column<double>(nullable: false),
+                    Vat = table.Column<double>(nullable: false),
+                    QuoteId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_QuoteItems", x => x.QuoteItemsId);
+                    table.ForeignKey(
+                        name: "FK_QuoteItems_Quotes_QuoteId",
+                        column: x => x.QuoteId,
+                        principalTable: "Quotes",
+                        principalColumn: "QuoteId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ExternalQuoteItems",
+                columns: table => new
+                {
+                    QuoteItemsId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(nullable: true),
+                    Quantity = table.Column<int>(nullable: false),
+                    Price = table.Column<double>(nullable: false),
+                    Vat = table.Column<double>(nullable: false),
+                    QuoteId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ExternalQuoteItems", x => x.QuoteItemsId);
+                    table.ForeignKey(
+                        name: "FK_ExternalQuoteItems_ExternalQuotes_QuoteId",
+                        column: x => x.QuoteId,
+                        principalTable: "ExternalQuotes",
+                        principalColumn: "QuoteId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FeedbackComments",
+                columns: table => new
+                {
+                    FeedbackCommentId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    ClientFeedbackId = table.Column<int>(nullable: false),
+                    ClientContactInfoId = table.Column<int>(nullable: true),
+                    EmployeeId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FeedbackComments", x => x.FeedbackCommentId);
+                    table.ForeignKey(
+                        name: "FK_FeedbackComments_ClientContactInfos_ClientContactInfoId",
+                        column: x => x.ClientContactInfoId,
+                        principalTable: "ClientContactInfos",
+                        principalColumn: "ClientContactInfoId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_FeedbackComments_ClientFeedbacks_ClientFeedbackId",
+                        column: x => x.ClientFeedbackId,
+                        principalTable: "ClientFeedbacks",
+                        principalColumn: "ClientFeedbackId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_FeedbackComments_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "EmployeeId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CostEstimateItems",
                 columns: table => new
                 {
@@ -523,6 +612,113 @@ namespace BaseAPI.Migrations
                         column: x => x.CostEstimateId,
                         principalTable: "CostEstimates",
                         principalColumn: "CostEstimateId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EmployeeTimeline",
+                columns: table => new
+                {
+                    EmployeeTimelineId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    EmployeeId = table.Column<int>(nullable: true),
+                    TimelineId = table.Column<int>(nullable: true),
+                    ProjectId = table.Column<int>(nullable: true),
+                    EmployeeRoleId = table.Column<int>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeTimeline", x => x.EmployeeTimelineId);
+                    table.ForeignKey(
+                        name: "FK_EmployeeTimeline_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "EmployeeId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EmployeeTimeline_EmployeeRoles_EmployeeRoleId",
+                        column: x => x.EmployeeRoleId,
+                        principalTable: "EmployeeRoles",
+                        principalColumn: "EmployeeRoleId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EmployeeTimeline_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "ProjectId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EmployeeTimeline_Timelines_TimelineId",
+                        column: x => x.TimelineId,
+                        principalTable: "Timelines",
+                        principalColumn: "TimelineId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectContents",
+                columns: table => new
+                {
+                    ProjectContentId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ImagePath = table.Column<string>(nullable: true),
+                    VoiceNotePath = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    TimelineId = table.Column<int>(nullable: false),
+                    EmployeeId = table.Column<int>(nullable: true),
+                    ClientContactInfoId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectContents", x => x.ProjectContentId);
+                    table.ForeignKey(
+                        name: "FK_ProjectContents_ClientContactInfos_ClientContactInfoId",
+                        column: x => x.ClientContactInfoId,
+                        principalTable: "ClientContactInfos",
+                        principalColumn: "ClientContactInfoId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProjectContents_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "EmployeeId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProjectContents_Timelines_TimelineId",
+                        column: x => x.TimelineId,
+                        principalTable: "Timelines",
+                        principalColumn: "TimelineId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Defaults",
+                columns: table => new
+                {
+                    DefaultId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    ProjectContentId = table.Column<int>(nullable: false),
+                    DefaultTypeId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Defaults", x => x.DefaultId);
+                    table.ForeignKey(
+                        name: "FK_Defaults_DefaultTypes_DefaultTypeId",
+                        column: x => x.DefaultTypeId,
+                        principalTable: "DefaultTypes",
+                        principalColumn: "DefaultTypeId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Defaults_ProjectContents_ProjectContentId",
+                        column: x => x.ProjectContentId,
+                        principalTable: "ProjectContents",
+                        principalColumn: "ProjectContentId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -567,6 +763,11 @@ namespace BaseAPI.Migrations
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ClientFeedbacks_ClientContactInfoId",
+                table: "ClientFeedbacks",
+                column: "ClientContactInfoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CostEstimateItems_CostEstimateId",
                 table: "CostEstimateItems",
                 column: "CostEstimateId");
@@ -587,6 +788,11 @@ namespace BaseAPI.Migrations
                 column: "DefaultTypeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Defaults_ProjectContentId",
+                table: "Defaults",
+                column: "ProjectContentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EmployeeAccounts_EmployeeId",
                 table: "EmployeeAccounts",
                 column: "EmployeeId");
@@ -597,14 +803,54 @@ namespace BaseAPI.Migrations
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EmployeeTimeline_EmployeeId",
+                table: "EmployeeTimeline",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeTimeline_EmployeeRoleId",
+                table: "EmployeeTimeline",
+                column: "EmployeeRoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeTimeline_ProjectId",
+                table: "EmployeeTimeline",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeTimeline_TimelineId",
+                table: "EmployeeTimeline",
+                column: "TimelineId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ExternalQuoteItems_QuoteId",
                 table: "ExternalQuoteItems",
                 column: "QuoteId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ExternalQuotes_SupplierId",
+                table: "ExternalQuotes",
+                column: "SupplierId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ExternalSupplierAccounts_SupplierId",
                 table: "ExternalSupplierAccounts",
                 column: "SupplierId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FeedbackComments_ClientContactInfoId",
+                table: "FeedbackComments",
+                column: "ClientContactInfoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FeedbackComments_ClientFeedbackId",
+                table: "FeedbackComments",
+                column: "ClientFeedbackId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FeedbackComments_EmployeeId",
+                table: "FeedbackComments",
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_InvoiceItems_DefaultId",
@@ -627,14 +873,39 @@ namespace BaseAPI.Migrations
                 column: "BaseAccountId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProjectContents_ClientContactInfoId",
+                table: "ProjectContents",
+                column: "ClientContactInfoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectContents_EmployeeId",
+                table: "ProjectContents",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectContents_TimelineId",
+                table: "ProjectContents",
+                column: "TimelineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectFiles_ClientContactInfoId",
+                table: "ProjectFiles",
+                column: "ClientContactInfoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectFiles_EmployeeId",
+                table: "ProjectFiles",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectFiles_ProjectId",
+                table: "ProjectFiles",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Projects_ClientId",
                 table: "Projects",
                 column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Projects_ProjectStatusId",
-                table: "Projects",
-                column: "ProjectStatusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_QuoteItems_QuoteId",
@@ -668,9 +939,6 @@ namespace BaseAPI.Migrations
                 name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "ClientContactInfos");
-
-            migrationBuilder.DropTable(
                 name: "CostEstimateItems");
 
             migrationBuilder.DropTable(
@@ -680,19 +948,25 @@ namespace BaseAPI.Migrations
                 name: "EmployeeKins");
 
             migrationBuilder.DropTable(
+                name: "EmployeeTimeline");
+
+            migrationBuilder.DropTable(
                 name: "ExternalQuoteItems");
 
             migrationBuilder.DropTable(
                 name: "ExternalSupplierAccounts");
 
             migrationBuilder.DropTable(
+                name: "FeedbackComments");
+
+            migrationBuilder.DropTable(
                 name: "InvoiceItems");
 
             migrationBuilder.DropTable(
-                name: "QuoteItems");
+                name: "ProjectFiles");
 
             migrationBuilder.DropTable(
-                name: "Timelines");
+                name: "QuoteItems");
 
             migrationBuilder.DropTable(
                 name: "Transactions");
@@ -701,10 +975,13 @@ namespace BaseAPI.Migrations
                 name: "CostEstimates");
 
             migrationBuilder.DropTable(
+                name: "EmployeeRoles");
+
+            migrationBuilder.DropTable(
                 name: "ExternalQuotes");
 
             migrationBuilder.DropTable(
-                name: "ExternalSuppliers");
+                name: "ClientFeedbacks");
 
             migrationBuilder.DropTable(
                 name: "Defaults");
@@ -719,22 +996,34 @@ namespace BaseAPI.Migrations
                 name: "MainAccounts");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "ExternalSuppliers");
 
             migrationBuilder.DropTable(
                 name: "DefaultTypes");
 
             migrationBuilder.DropTable(
-                name: "Projects");
+                name: "ProjectContents");
 
             migrationBuilder.DropTable(
                 name: "BaseAccounts");
 
             migrationBuilder.DropTable(
-                name: "Clients");
+                name: "ClientContactInfos");
+
+            migrationBuilder.DropTable(
+                name: "Employees");
+
+            migrationBuilder.DropTable(
+                name: "Timelines");
+
+            migrationBuilder.DropTable(
+                name: "Projects");
 
             migrationBuilder.DropTable(
                 name: "ProjectStatuses");
+
+            migrationBuilder.DropTable(
+                name: "Clients");
         }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BaseAPI.Migrations
 {
     [DbContext(typeof(BaseApiContext))]
-    [Migration("20190130095346_new-date")]
-    partial class newdate
+    [Migration("20190130153952_fixMigrations")]
+    partial class fixMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

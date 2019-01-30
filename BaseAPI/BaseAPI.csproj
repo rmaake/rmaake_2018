@@ -6,7 +6,7 @@
     <AWSProjectType>Lambda</AWSProjectType>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <Compile Remove="Migrations\20181205132626_fourth.cs" />
     <Compile Remove="Migrations\20181205132626_fourth.Designer.cs" />
     <Compile Remove="Migrations\20181205134833_fouth.cs" />
@@ -17,7 +17,7 @@
     <Compile Remove="Migrations\20190129072619_feedback.Designer.cs" />
     <Compile Remove="Migrations\20190129073744_feeback2.cs" />
     <Compile Remove="Migrations\20190129073744_feeback2.Designer.cs" />
-  </ItemGroup>
+  </ItemGroup> -->
 
   <ItemGroup>
     <Folder Include="Controllers\Internal\Finances\" />
@@ -37,7 +37,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.4" />
     <PackageReference Include="Select.HtmlToPdf.NetCore" Version="18.4.0" />
-    <DotNetCliToolReference Include="Amazon.Lambda.Tools" Version="2.0.1" />
+    <!-- <DotNetCliToolReference Include="Amazon.Lambda.Tools" Version="2.0.1" /> -->
   </ItemGroup>
 
 </Project>
