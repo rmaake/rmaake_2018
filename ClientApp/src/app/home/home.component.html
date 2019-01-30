@@ -1,95 +1,106 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="header well">
-      <h2>DashBoard</h2>
-      <p>Welcome to NRP Portal Dashboard</p>
-    </div>
-    
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="well dashboard-project">
-      <a [routerLink]="['/project']" style="text-decoration:none; color: black;">
-        <img src="assets/project.png" class="dashboard-img">
-        <h3>Projects</h3>
-      </a>
-    </div>
-  </div>
-  <!--<div class="col-sm-4">
-    <div class="well dashboard-rfq">
-      <a [routerLink]="['/rfq']" style="text-decoration:none; color: black;">
-        <img src="assets/quote.png" class="dashboard-img">
-        <h3>RFQs</h3>
-      </a>
-    </div>
-  </div>-->
-  <div class="col-sm-6">
-    <div class="well dashboard-report">
-      <a [routerLink]="['/reports']" style="text-decoration:none; color: black;">
-        <img src="assets/report.png" class="dashboard-img">
-        <h3>Report</h3>
-      </a>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="well dashboard-finance">
-      <a [routerLink]="['/finance']" style="text-decoration:none; color: black;">
-        <img src="assets/finance.png" class="dashboard-img">
-        <h3>Finance</h3>
-      </a>
-    </div>
-  </div>
-  <!--<div class="col-sm-4">
-    <div class="well dashboard-quote">
-      <a [routerLink]="['/quotes']" style="text-decoration:none; color: black;">
-        <img src="assets/quote.png" class="dashboard-img">
-        <h3>Quotes</h3>
-      </a>
-    </div>
-  </div>-->
-  <div class="col-sm-6">
-    <div class="well dashboard-admin">
-      <a [routerLink]="['/admin']" style="text-decoration:none; color: black;">
-        <img src="assets/admin.png" class="dashboard-img">
-        <h3>Admin</h3>
-      </a>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-4">
-    <div class="well">
-      <img src="assets/graph-1.png" class="dashboard-img">
-      <h5>{{activeProjects}}</h5>
-      <P>Active Projects</P>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="well">
-      <img src="assets/graph-2.png" class="dashboard-img">
-      <h5>{{clients.length}}</h5>
-      <p>Clients</p>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="well">
-      <img src="assets/graph-3.png" class="dashboard-img">
-      <h5>{{completedProjects}}</h5>
-      <p>Completed projects</p>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <div class="well">
-      <h5 class="card-title">DAILY UPDATES</h5>
-      <p class="card-text"><b>[TODAY]:  </b>Phumie added a new project.</p>
-      <p class="card-text"><b>[TODAY]: </b>Palesa (Nedbank) added feedback on paint job project.</p>
-      <p class="card-text"><b>[TODAY]: </b>Ntleleng requested writing permissions for finance.</p>
+<div class="main-content">
+    <h5 align="center">Dashboard</h5>
+    <div class="card-columns">
+        <div class="card">
+            <div class="card-body" style="background-color:#ffb54d">
+                <a routerLink="/projects" class="card-title" align="center">
+                    <img src="assets/project.png" class="img">
+                </a>
+                <a routerLink="/projects" align="center">
+                    <h6>PROJECTS</h6>
+                </a>
+            </div>
+        </div> 
+        
+        <div class="card">
+            <div class="card-body" style="background-color:#227093">
+                <a routerLink="/finance" class="card-title" align="center">
+                    <img src="assets/finance.png" class="img">
+                </a>
+                <a routerLink="/finance" align="center">
+                    <h6>FINANCE</h6>
+                </a>
+            </div>
+        </div>
 
+        <div class="card">
+            <div class="card-body" style="background-color:#33d9b2;">
+                <a routerLink="/rfqs" class="card-title" align="center">
+                    <img src="assets/quote.png" class="img">
+                </a>
+                <a routerLink="/rfqs" align="center">
+                    <h6>RFQs</h6>
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <div class="card-body" style="background-color:#e74c3c;">
+                <a routerLink="/quotes" class="card-title" align="center">
+                    <img src="assets/quote.png" class="img">
+                </a>
+                <a routerLink="/quotes" align="center">
+                    <h6>QUOTES</h6>
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body" style="background-color: #9b59b6;">
+                <a routerLink="/reports" class="card-title" align="center">
+                    <img src="assets/report.png" class="img">
+                </a>
+                <a routerLink="/reports" align="center">
+                    <h6>REPORTS</h6>
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body" style="background-color:#227093;">
+                <a routerLink="/admin" class="card-title" align="center">
+                    <img src="assets/admin.png" class="img">
+                </a>
+                <a routerLink="/admin" align="center">
+                    <h6>ADMIN</h6>
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card-columns">
+                <div class="card" id="card">
+                    <img src="assets/graph-1.png" class="icons">
+                    <h5>4</h5>
+                    <P>Active Projects</P>
+                </div>
+
+                <div class="card" id="card">
+                    <img src="assets/graph-2.png" class="icons">
+                    <h5>8</h5>
+                    <p>Clients</p>
+                </div>
+                <div class="card" id="card">
+                    <img src="assets/graph-3.png" class="icons">
+                    <h5>12</h5>
+                    <p>Completed projects</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card updates" >
+                <div class="card-header" >
+                    <h5 class="card-title">DAILY UPDATES</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><b>[TODAY]: </b>Phumie added a new project.</p>
+                    <p class="card-text"><b>[TODAY]: </b>Palesa (Nedbank) added feedback on paint job project.</p>
+                    <p class="card-text"><b>[TODAY]: </b>Ntleleng requested writing permissions for finance.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,16 +1,6 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="header well">
-      <h2>Employee Profile: {{employee.firstName}} {{employee.lastName}}</h2>
-      <p>This is where you can change your profile picture and password</p>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="main-login main-center col-sm-6">
-    <div class="well" style="background-color:none">
-      <h2 style="text-align: center">Change Password</h2>
-      <form class="form-horizontal">
+<div class="main-content">
+    <h4 align="center">EMPLOYEE PROFILE</h4>
+    <form class="form-horizontal">
         <div class="form-group">
           <label for="username" class="cols-sm-2 control-label">Old Password:</label>
           <div class="cols-sm-10">
@@ -42,19 +32,84 @@
           <button class="btn btn-success btn-md" (click)="submit()" [disabled]="sent">Change Password</button>
         </div>
       </form>
+    <hr>
+    <form>
+        <div class="form-group">
+            <p><b>CHANGE PROFILE PHOTO</b></p>
+            <label><b>Attach File</b></label>
+            <input type="file" class="form-control-file">
+            <!-- <input #file name="pic" change="fileChange(file.files)"/> -->
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button class="btn btn-success btn-md">Change Picture</button>                      
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<!-- <div class="row">
+  <div class="col-sm-12">
+    <div class="header well">
+      <h2>Employee Profile: {{employee.firstName}} {{employee.lastName}}</h2>
+      <p>This is where you can change your profile picture and password</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="main-login main-center col-sm-6">
+    <div class="well" style="background-color:none">
+      <h2 style="text-align: center">Change Password</h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">Old Password:</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Enter your old password" [(ngModel)]="passwordChange.oldPassword" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">New Password:</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="Enter your new password" [(ngModel)]="passwordChange.newPassword" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">Confirm Password:</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm your new password" [(ngModel)]="confirmPassword" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn btn-success btn-md" (click)="submit()" [disabled]="!checkPassword()">Change Password</button>
+        </div>
+      </form>
     </div>
   </div>
   <div class="main-login main-center col-sm-6">
     <div class="well" style="background-color:none">
       <h2 style="text-align: center">Change Profile Picture</h2>
       <div class="row" style="text-align:center">
-        <img src="http://localhost:55079/api/{{employee.imagePath}}" class="img-profile"/>
+        <img src="{{url}}{{employee.imagePath}}" class="img-profile"/>
       </div>
       <br />
       <div class="row" style="text-align:center">
-        <input #file name="pic" change="fileChange(file.files)"/>
-        <button class="btn btn-primary">Change Picture</button>
+        <form>
+          <input #file type="file" id="file" name="pic" accept="image/gif,image/jpeg,image/png" (change)="fileChange(file.files)" style="display:none"/>
+          <button class="btn btn-primary" (click)="fileUpload()">Change Picture</button>
+        </form>
+        
       </div>
     </div>
   </div>
-</div>
+</div> -->

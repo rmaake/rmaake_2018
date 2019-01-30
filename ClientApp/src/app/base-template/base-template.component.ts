@@ -2,19 +2,18 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/authentication.service';
 import { Employee } from '../models/employee.model';
 import { ClientContact } from '../models/clientContact.model';
-import { environment } from '../../environments/environment.prod';
 
 @Component({
-  selector: 'app-nav-menu',
-  templateUrl: './nav-menu.component.html',
-  styleUrls: ['./nav-menu.component.css']
+  selector: 'app-base-template',
+  templateUrl: './base-template.component.html',
+  styleUrls: ['./base-template.component.css']
 })
-export class NavMenuComponent {
+export class BaseTemplateComponent {
+
   isExpanded = false;
   employee = new Employee();
   client = new ClientContact();
   user = 0;
-  url = environment.apiUrl;
   constructor(private auth: AuthService) {
     this.auth.isLoggedIn.subscribe(resp => {
       if (resp == 1)

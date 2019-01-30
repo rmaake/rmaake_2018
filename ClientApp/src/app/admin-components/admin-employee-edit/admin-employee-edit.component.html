@@ -1,264 +1,258 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="header well">
-      <h2 style="color:white">Employee Information</h2>
-      <p style="color:white">Add, update or remove employee info</p>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="nav nav-tabs">
-      <li id="0" class="active"><a (click)="switchTab(0)">Employee</a></li>
-      <li id="1"><a (click)="switchTab(1)">Employee Next of Kin</a></li>
-      <li id="2"><a (click)="switchTab(2)">Employee Account</a></li>
-      <li id="3"><a (click)="switchTab(3)">Access Rights</a></li>
-    </ul>
-    <!--Tab: General-->
-    <div id="menu0" class="tab-pane " *ngIf="tabNumber == 0">
-      <div class="main-login main-center col-md-9">
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">First Name(s):</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="firstName" id="firstname" placeholder="Enter first name" [(ngModel)]="employee.firstName"/>
+<div class="main-content">
+  <h4 align="center">MANAGE EMPLOYEES</h4>
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="nav nav-tabs">
+        <li id="0" class="active"><a (click)="switchTab(0)">Employee</a></li>
+        <li id="1"><a (click)="switchTab(1)">Employee Next of Kin</a></li>
+        <li id="2"><a (click)="switchTab(2)">Employee Account</a></li>
+        <li id="3"><a (click)="switchTab(3)">Access Rights</a></li>
+      </ul>
+      <!--Tab: General-->
+      <div id="menu0" class="tab-pane " *ngIf="tabNumber == 0">
+        <div class="main-login main-center col-md-9">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">First Name(s):</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="firstName" id="firstname" placeholder="Enter first name" [(ngModel)]="employee.firstName"/>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Last Name:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-                <input type="text" class="form-control"  name="lastName" id="lastname" placeholder="Enter last name" [(ngModel)]="employee.lastName"/>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Last Name:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control"  name="lastName" id="lastname" placeholder="Enter last name" [(ngModel)]="employee.lastName"/>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Contact Number:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-phone" aria-hidden="true"></i></span>
-                <input type="text" class="form-control"  name="contact" id="contactnumber" placeholder="Enter contact number" [(ngModel)]="employee.contactNumber"/>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Contact Number:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-phone" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control"  name="contact" id="contactnumber" placeholder="Enter contact number" [(ngModel)]="employee.contactNumber"/>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Alternative Contact:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="alternative" id="username" placeholder="Enter alternative contact number" [(ngModel)]="employee.alternativeNumber"/>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Alternative Contact:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="alternative" id="username" placeholder="Enter alternative contact number" [(ngModel)]="employee.alternativeNumber"/>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="cols-sm-2 control-label">Email:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="	glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="email" id="email" placeholder="Enter email address" [(ngModel)]="employee.email"/>
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Email:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="	glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Enter email address" [(ngModel)]="employee.email"/>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="cols-sm-2 control-label">Physical Address:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="	glyphicon glyphicon-home" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="physicaladdress" id="physicaladdress" placeholder="Enter physical address" [(ngModel)]="employee.physicalAddress"/>
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Physical Address:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="	glyphicon glyphicon-home" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="physicaladdress" id="physicaladdress" placeholder="Enter physical address" [(ngModel)]="employee.physicalAddress"/>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="cols-sm-2 control-label">Postal Address:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="	glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="postaladdress" id="postaladdress" placeholder="Enter postal address" [(ngModel)]="employee.postalAddress"/>
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Postal Address:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="	glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="postaladdress" id="postaladdress" placeholder="Enter postal address" [(ngModel)]="employee.postalAddress"/>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="cols-sm-2 control-label">ID number:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="	glyphicon glyphicon-lock" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="saidnumber" id="saidnumber" placeholder="Enter enter SA ID/Passport number" [(ngModel)]="employee.said"/>
-              </div>
-             
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!--Tab: Employee next of Kin Form-->
-    <div id="menu1" class="tab-pane " *ngIf="tabNumber == 1">
-      <div class="main-login main-center col-md-9">
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">First Name(s):</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="firstName" id="firstname" placeholder="Enter first name" [(ngModel)]="employeeKin.firstName" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Last Name:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="lastName" id="lastname" placeholder="Enter last name" [(ngModel)]="employeeKin.lastName" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Contact Number:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-phone" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="contact" id="contactnumber" placeholder="Enter contact number" [(ngModel)]="employeeKin.contactNumber" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Alternative Contact:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="alternative" id="username" placeholder="Enter alternative contact number" [(ngModel)]="employeeKin.alternativeNumber" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="cols-sm-2 control-label">Email:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="	glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="email" id="email" placeholder="Enter email address" [(ngModel)]="employeeKin.email" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="cols-sm-2 control-label">Physical Address:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="	glyphicon glyphicon-home" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="physicaladdress" id="physicaladdress" placeholder="Enter physical address" [(ngModel)]="employeeKin.physicalAddress" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="cols-sm-2 control-label">Postal Address:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="	glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="postaladdress" id="postaladdress" placeholder="Enter postal address" [(ngModel)]="employeeKin.postalAddress" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="cols-sm-2 control-label">ID number:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="	glyphicon glyphicon-lock" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="saidnumber" id="saidnumber" placeholder="Enter enter SA ID/Passport number" [(ngModel)]="employeeKin.said" />
-              </div>
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">ID number:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="	glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="saidnumber" id="saidnumber" placeholder="Enter enter SA ID/Passport number" [(ngModel)]="employee.said"/>
+                </div>
               
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <!--Tab: Employee account details-->
-    <div id="menu2" class="tab-pane" *ngIf="tabNumber == 2">
-      <div class="main-login main-center col-md-9">
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Bank Name:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-education" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="bankName" id="bankName" placeholder="Enter bank name" [(ngModel)]="employeeAccount.bankName"/>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Account Number:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-list" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="account" id="account" placeholder="Enter account number" [(ngModel)]="employeeAccount.accountNumber"/>
+          </form>
+        </div>
+      </div>
+
+      <!--Tab: Employee next of Kin Form-->
+      <div id="menu1" class="tab-pane " *ngIf="tabNumber == 1">
+        <div class="main-login main-center col-md-9">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">First Name(s):</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="firstName" id="firstname" placeholder="Enter first name" [(ngModel)]="employeeKin.firstName" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Branch Code:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-home" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="code" id="code" placeholder="Enter branch code" [(ngModel)]="employeeAccount.branchCode"/>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Last Name:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="lastName" id="lastname" placeholder="Enter last name" [(ngModel)]="employeeKin.lastName" />
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Contact Number:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-phone" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="contact" id="contactnumber" placeholder="Enter contact number" [(ngModel)]="employeeKin.contactNumber" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Alternative Contact:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="alternative" id="username" placeholder="Enter alternative contact number" [(ngModel)]="employeeKin.alternativeNumber" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Email:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="	glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Enter email address" [(ngModel)]="employeeKin.email" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Physical Address:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="	glyphicon glyphicon-home" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="physicaladdress" id="physicaladdress" placeholder="Enter physical address" [(ngModel)]="employeeKin.physicalAddress" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Postal Address:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="	glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="postaladdress" id="postaladdress" placeholder="Enter postal address" [(ngModel)]="employeeKin.postalAddress" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">ID number:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="	glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="saidnumber" id="saidnumber" placeholder="Enter enter SA ID/Passport number" [(ngModel)]="employeeKin.said" />
+                </div>
+                
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-    <!--Tab: Employee access rights-->
-    <div id="menu3" class="tab-pane" *ngIf="tabNumber == 3">
-      <div class="row">
-        <div class="col-sm-4">
-          <h4>Projects</h4>
-          <div class="input-group">
-            <input type="checkbox"  (change)="test('projects', 'read', $event.srcElement.checked)" [ngModel]="isChecked('projects:read')"/> Read<br />
-            <input type="checkbox"  (change)="test('projects', 'write', $event.srcElement.checked)" [ngModel]="isChecked('projects:write')"/>  Write<br />
-            <input type="checkbox"  (change)="test('projects', 'delete', $event.srcElement.checked)" [ngModel]="isChecked('projects:delete')"/>  Delete
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <h4>Finance</h4>
-          <div class="input-group">
-            <input type="checkbox"  (change)="test('finance', 'read', $event.srcElement.checked)" [ngModel]="isChecked('finance:read')"/> Read<br />
-            <input type="checkbox"  (change)="test('finance', 'write', $event.srcElement.checked)" [ngModel]="isChecked('finance:write')"/>  Write<br />
-            <input type="checkbox"  (change)="test('finance', 'delete', $event.srcElement.checked)" [ngModel]="isChecked('finance:delete')"/>  Delete
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <h4>Admin</h4>
-          <div class="input-group">
-            <input type="checkbox"  (change)="test('admin', 'read', $event.srcElement.checked)" [ngModel]="isChecked('admin:read')"/> Read<br />
-            <input type="checkbox"  (change)="test('admin', 'write', $event.srcElement.checked)" [ngModel]="isChecked('admin:write')"/>  Write<br />
-            <input type="checkbox"  (change)="test('admin', 'delete', $event.srcElement.checked)" [ngModel]="isChecked('admin:delete')"/>  Delete
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <h4>Quotes</h4>
-          <div class="input-group">
-            <input type="checkbox"  (change)="test('quotes', 'read', $event.srcElement.checked)" [ngModel]="isChecked('quotes:read')"/> Read<br />
-            <input type="checkbox"  (change)="test('quotes', 'write', $event.srcElement.checked)" [ngModel]="isChecked('quotes:write')"/>  Write<br />
-            <input type="checkbox"  (change)="test('quotes', 'delete', $event.srcElement.checked)" [ngModel]="isChecked('quotes:delete')"/>  Delete
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <h4>Reports</h4>
-          <div class="input-group">
-            <input type="checkbox"  (change)="test('reports', 'read', $event.srcElement.checked)" [ngModel]="isChecked('reports:read')"/> Read<br />
-            <input type="checkbox"  (change)="test('reports', 'write', $event.srcElement.checked)" [ngModel]="isChecked('reports:write')"/>  Write<br />
-            <input type="checkbox"  (change)="test('reports', 'delete', $event.srcElement.checked)" [ngModel]="isChecked('reports:delete')"/>  Delete
-          </div>
+      <!--Tab: Employee account details-->
+      <div id="menu2" class="tab-pane" *ngIf="tabNumber == 2">
+        <div class="main-login main-center col-md-9">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Bank Name:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-education" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="bankName" id="bankName" placeholder="Enter bank name" [(ngModel)]="employeeAccount.bankName"/>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Account Number:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-list" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="account" id="account" placeholder="Enter account number" [(ngModel)]="employeeAccount.accountNumber"/>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Branch Code:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-home" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="code" id="code" placeholder="Enter branch code" [(ngModel)]="employeeAccount.branchCode"/>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-      <br/>
-      <div class="row">
-        <button class="btn btn-success btn-md" (click)="submit()" [disabled]="sent">Save and Submit</button>
+      <!--Tab: Employee access rights-->
+      <div id="menu3" class="tab-pane" *ngIf="tabNumber == 3">
+        <div class="row">
+          <div class="col-sm-4">
+            <h4>Projects</h4>
+            <div class="input-group">
+              <input type="checkbox"  (change)="test('projects', 'read', $event.srcElement.checked)" [ngModel]="isChecked('projects:read')"/> Read<br />
+              <input type="checkbox"  (change)="test('projects', 'write', $event.srcElement.checked)" [ngModel]="isChecked('projects:write')"/>  Write<br />
+              <input type="checkbox"  (change)="test('projects', 'delete', $event.srcElement.checked)" [ngModel]="isChecked('projects:delete')"/>  Delete
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <h4>Finance</h4>
+            <div class="input-group">
+              <input type="checkbox"  (change)="test('finance', 'read', $event.srcElement.checked)" [ngModel]="isChecked('finance:read')"/> Read<br />
+              <input type="checkbox"  (change)="test('finance', 'write', $event.srcElement.checked)" [ngModel]="isChecked('finance:write')"/>  Write<br />
+              <input type="checkbox"  (change)="test('finance', 'delete', $event.srcElement.checked)" [ngModel]="isChecked('finance:delete')"/>  Delete
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <h4>Admin</h4>
+            <div class="input-group">
+              <input type="checkbox"  (change)="test('admin', 'read', $event.srcElement.checked)" [ngModel]="isChecked('admin:read')"/> Read<br />
+              <input type="checkbox"  (change)="test('admin', 'write', $event.srcElement.checked)" [ngModel]="isChecked('admin:write')"/>  Write<br />
+              <input type="checkbox"  (change)="test('admin', 'delete', $event.srcElement.checked)" [ngModel]="isChecked('admin:delete')"/>  Delete
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <h4>Quotes</h4>
+            <div class="input-group">
+              <input type="checkbox"  (change)="test('quotes', 'read', $event.srcElement.checked)" [ngModel]="isChecked('quotes:read')"/> Read<br />
+              <input type="checkbox"  (change)="test('quotes', 'write', $event.srcElement.checked)" [ngModel]="isChecked('quotes:write')"/>  Write<br />
+              <input type="checkbox"  (change)="test('quotes', 'delete', $event.srcElement.checked)" [ngModel]="isChecked('quotes:delete')"/>  Delete
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <h4>Reports</h4>
+            <div class="input-group">
+              <input type="checkbox"  (change)="test('reports', 'read', $event.srcElement.checked)" [ngModel]="isChecked('reports:read')"/> Read<br />
+              <input type="checkbox"  (change)="test('reports', 'write', $event.srcElement.checked)" [ngModel]="isChecked('reports:write')"/>  Write<br />
+              <input type="checkbox"  (change)="test('reports', 'delete', $event.srcElement.checked)" [ngModel]="isChecked('reports:delete')"/>  Delete
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <button class="btn btn-success btn-md" (click)="submit()" [disabled]="sent">Save and Submit</button>
+        </div>
       </div>
     </div>
   </div>

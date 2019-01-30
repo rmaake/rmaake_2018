@@ -1,54 +1,53 @@
-.header {
-  background-color: #5b80a4;
-  color: azure;
+/* main content */
+
+.main-content {
+	padding-left: 280px;
+	padding-right: 30px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-top: 10px;
 }
 
-/*divs setup*/
-.dashboard-project {
-  text-align:center;
-  background-color: #ffb54d;
-}
-.dashboard-rfq {
-  text-align: center;
-  background-color: #e74c3c;
-}
-.dashboard-report {
-  text-align: center;
-  background-color: #9b59b6;
-}
-.dashboard-finance {
-  text-align: center;
-  background-color: #227093;
-}
-.dashboard-quote {
-  text-align: center;
-  background-color: #33d9b2;
-}
-.dashboard-admin {
-  text-align: center;
-  background-color: #227093;
+.main-content a {
+    text-decoration: none;
+    color: black;
 }
 
-.dashboard-img{
-  height:30px;
-  width: 30px;
+.img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+    width: 30px;
+    margin-bottom: 5px;
 }
-/*div hovers*/
-.dashboard-project :hover {
-  color: antiquewhite;
-}
-.dashboard-report :hover {
-  color: antiquewhite;
-}
-.dashboard-rfq :hover {
-  color: antiquewhite;
-}
-.dashboard-quote :hover {
-  color: antiquewhite;
-}
-.dashboard-finance :hover {
-  color: antiquewhite;
-}
-.dashboard-admin :hover {
-  color: antiquewhite;
-}
+
+.icons {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    width: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  #card {
+      /* background-color: #f1f2f6; */
+      border: 1px solid #c3cbd5;
+  }
+
+  #card p, h5 {
+      text-align: center;
+  }
+
+  /* updates */
+
+  .updates {
+    box-shadow:0 20px 50px rgba(0,0,0,.1);
+    border-radius: 0px;
+    background-color: #778ca3;
+    color: white;
+    border: none;    
+  }

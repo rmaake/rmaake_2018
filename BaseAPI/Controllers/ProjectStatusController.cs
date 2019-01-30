@@ -7,13 +7,14 @@ using BaseAPI.Models;
 using BaseAPI.Models.Internal.Projects;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Authorization;
+
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BaseAPI.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("AllowAnyOrigin")]
-    [Authorize]
+    //[Authorize]
     public class ProjectStatusController : Controller
     {
         private BaseApiContext _context;

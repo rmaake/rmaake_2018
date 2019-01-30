@@ -15,6 +15,7 @@ import { PasswordChange } from '../models/passwordChange.model';
 import { HttpRequest, HttpEventType, HttpClient } from '@angular/common/http';
 import { EmployeeProfileComponent } from '../employee-profile/employee-profile.component';
 import { environment } from '../../environments/environment';
+import { AdminService } from './admin.service';
 
 @Injectable()
 export class EmployeeProfileService {
@@ -22,7 +23,7 @@ export class EmployeeProfileService {
   private url = environment.apiUrl;
   private options: RequestOptions;
 
-  constructor(private http: Http, public location: Location, public router: Router, private httpClient: HttpClient) {
+  constructor(private http: Http, public adminS: AdminService, public router: Router, private httpClient: HttpClient) {
     const headers = new Headers({
       'Content-Type': 'application/json',
     });
@@ -33,13 +34,24 @@ export class EmployeeProfileService {
     this.http.post(this.url + 'passwordchange', pChange, this.options).subscribe(resp => {
       alert("Password change successful");
     }, err => {
-      alert("Password chhange failed:\nPossible reasons: Incorrect old password");
+      alert("Password change failed:\nPossible reasons: Incorrect old password");
     });
   }
-  requestChangePassword(user: string) {
-    this.http.put(this.url + 'passwordchange/' + user, null, this.options).subscribe(resp => {
+  requestChangePassword(id: number, user: string) {
+    console.log("Username: " + user);
+    var obj = new UserCredentials();
+    obj.username = user;
+    obj.password = "none";
+    this.http.put(this.url + 'passwordchange/' + id.toString(), obj, this.options).subscribe(resp => {
       alert("A new password was sent to your email");
+
+      this.router.navigateByUrl('');
     }, err => { });
+  }
+  updateEmployee(employee: Employee) {
+    this.http.put(this.url + 'employee/' + employee.employeeId.toString(), employee, this.options).subscribe(resp => {
+      alert("Profile picture uploaded successfully");
+    }, err => { })
   }
   /*Manage Uploads*/
   upload(files, obj: EmployeeProfileComponent, path: string) {
@@ -61,6 +73,7 @@ export class EmployeeProfileService {
       else if (event.type === HttpEventType.Response) {
         obj.message = "success";
         obj.employee.imagePath = event.body.toString();
+        this.updateEmployee(obj.employee);
       }
 
     });

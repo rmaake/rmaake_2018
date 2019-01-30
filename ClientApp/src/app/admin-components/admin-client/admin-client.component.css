@@ -1,4 +1,77 @@
-.header {
-  background-color: #227093;
-  color: azure;
+.main-content {
+	padding-left: 280px;
+	padding-right: 30px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-top: 10px;
+}
+
+.list
+{
+    height: calc(100% - 5px);
+    background-color: white;
+    padding: 10px;
+    overflow: auto;
+}
+
+h3 {
+    text-align: center;
+    margin: 10px;
+}
+
+.input {
+    border: 1px solid #B9B9B9;
+    border-radius: 1px;
+}
+
+.search {
+    border: none;
+    background-color: white;
+}
+
+.add {
+    background-color: #135772;
+    border: none;
+    border-radius: 1px;
+}
+
+
+
+button a {
+    text-decoration: none;
+    color: #E6E6E6;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+    max-height: 455px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    margin-bottom: 10px;
+}
+
+.loader {
+    position: relative;
+    left: 40%;
+    top: 200px;
+}
+
+.add {
+    margin: 10px;
+    border: none;
+    height: 25px;
+    color: white;
+    background-color: rgb(252, 55, 55);
+}
+
+table {
+    width: 100%;
+    margin-top: 10px;
+}
+
+table th {
+    background-color: rgb(42, 43, 43);
+    color: white;
+    border: none;
 }

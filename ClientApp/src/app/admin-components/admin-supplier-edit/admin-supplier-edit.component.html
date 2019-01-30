@@ -1,109 +1,103 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="header well">
-      <h2 style="color:white">Supplier Information</h2>
-      <p style="color:white">Add, update or remove supplier info</p>
-    </div>
-  </div>
-</div>
+<div class="main-content">
+  <h4 align="center">MANAGE SUPPLIER</h4>
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="nav nav-tabs">
+        <li id="0" class="active"><a (click)="switchTab(0)">Supplier</a></li>
+        <li id="1"><a (click)="switchTab(1)">Supplier's Banking Details</a></li>
 
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="nav nav-tabs">
-      <li id="0" class="active"><a (click)="switchTab(0)">Supplier</a></li>
-      <li id="1"><a (click)="switchTab(1)">Supplier's Banking Details</a></li>
+      </ul>
+      <!--Tab: Supplier-->
+      <div id="menu0" class="tab-pane " *ngIf="tabNumber == 0">
+        <div class="main-login main-center col-md-9">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Business Name:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-home" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="businessName" id="businessname" placeholder="Enter business name" [(ngModel)]="supplier.name" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Telephone:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="tel" id="tel" placeholder="Enter supplier telephone number" [(ngModel)]="supplier.tell" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Email:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Enter supplier email address" [(ngModel)]="supplier.email" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Physical Address:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="physicalAdress" id="physicalAddress" placeholder="Enter supplier address" [(ngModel)]="supplier.address" />
+                </div>
+              </div>
+            </div>
 
-    </ul>
-    <!--Tab: Supplier-->
-    <div id="menu0" class="tab-pane " *ngIf="tabNumber == 0">
-      <div class="main-login main-center col-md-9">
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Business Name:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-home" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="businessName" id="businessname" placeholder="Enter business name" [(ngModel)]="supplier.name" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Telephone:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="tel" id="tel" placeholder="Enter supplier telephone number" [(ngModel)]="supplier.tell" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Email:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="email" id="email" placeholder="Enter supplier email address" [(ngModel)]="supplier.email" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Physical Address:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="physicalAdress" id="physicalAddress" placeholder="Enter supplier address" [(ngModel)]="supplier.address" />
-              </div>
-            </div>
-          </div>
-
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
 
-    <!--Tab: Supplier's Banking details-->
-    <div id="menu2" class="tab-pane" *ngIf="tabNumber == 1">
-      <div class="main-login main-center col-md-9">
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Reference Number:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="refNumber" id="refNumber" placeholder="Enter reference number" [(ngModel)]="supplierAccount.referenceNumber" />
+      <!--Tab: Supplier's Banking details-->
+      <div id="menu2" class="tab-pane" *ngIf="tabNumber == 1">
+        <div class="main-login main-center col-md-9">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Reference Number:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="refNumber" id="refNumber" placeholder="Enter reference number" [(ngModel)]="supplierAccount.referenceNumber" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Bank Name:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-education" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="bankName" id="bankName" placeholder="Enter bank name" [(ngModel)]="supplierAccount.bankName" />
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Bank Name:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-education" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="bankName" id="bankName" placeholder="Enter bank name" [(ngModel)]="supplierAccount.bankName" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Account Number:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-list" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="account" id="account" placeholder="Enter account number" [(ngModel)]="supplierAccount.bankAccount" />
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Account Number:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-list" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="account" id="account" placeholder="Enter account number" [(ngModel)]="supplierAccount.bankAccount" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Branch Code:</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-home" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="code" id="code" placeholder="Enter branch code" [(ngModel)]="supplierAccount.branchCode" />
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Branch Code:</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-home" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="code" id="code" placeholder="Enter branch code" [(ngModel)]="supplierAccount.branchCode" />
+                </div>
               </div>
             </div>
-          </div>
-          <br />
-          <div class="row">
-            <button class="btn btn-success btn-md" (click)="submit()" [disabled]="sent">Save and Submit</button>
-          </div>
-        </form>
+            <br />
+            <div class="row">
+              <button class="btn btn-success btn-md" (click)="submit()" [disabled]="sent">Save and Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
