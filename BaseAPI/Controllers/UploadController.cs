@@ -59,33 +59,35 @@ namespace BaseAPI.Controllers
         [HttpPost("{id}")]
         public ActionResult UploadFile(string id)
         {
-            try
-            {
-                var file = Request.Form.Files[0];
-                string folderName = "Upload";
-                string webRootPath = _hostingEnvironment.WebRootPath;
-                string newPath = Path.Combine(webRootPath, folderName);
-                if (!Directory.Exists(newPath))
-                {
-                    Directory.CreateDirectory(newPath);
-                }
-                if (file.Length > 0)
-                {
-                    string fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    string fullPath = Path.Combine(newPath, fileName);
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-                    System.IO.File.Delete(Path.Combine(newPath, id));
-                    return Json("upload/" + fileName);
-                }
-                return Json("Uploaded success");
-            }
-            catch (System.Exception ex)
-            {
-                return Json("Upload Failed: " + ex.Message);
-            }
+            return (Json(LocalUploadController.UploadLocalFile(Request.Form.Files[0], _hostingEnvironment)));
+            // if ()
+            // try
+            // {
+            //     var file = Request.Form.Files[0];
+            //     string folderName = "Upload";
+            //     string webRootPath = _hostingEnvironment.WebRootPath;
+            //     string newPath = Path.Combine(webRootPath, folderName);
+            //     if (!Directory.Exists(newPath))
+            //     {
+            //         Directory.CreateDirectory(newPath);
+            //     }
+            //     if (file.Length > 0)
+            //     {
+            //         string fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+            //         string fullPath = Path.Combine(newPath, fileName);
+            //         using (var stream = new FileStream(fullPath, FileMode.Create))
+            //         {
+            //             file.CopyTo(stream);
+            //         }
+            //         System.IO.File.Delete(Path.Combine(newPath, id));
+            //         return Json("upload/" + fileName);
+            //     }
+            //     return Json("Uploaded success");
+            // }
+            // catch (System.Exception ex)
+            // {
+            //     return Json("Upload Failed: " + ex.Message);
+            // }
         }
         [HttpGet("download")]
         public IActionResult GetBlobDownload([FromQuery] string link)
