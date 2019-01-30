@@ -13,7 +13,7 @@ namespace BaseAPI.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("AllowAnyOrigin")]
-    [Authorize]
+    
     public class TimelineController : Controller
     {
         private ITimelineRepo _timeline;
@@ -23,6 +23,7 @@ namespace BaseAPI.Controllers
             _timeline = timeline;
         }
         // GET: api/<controller>
+
         [HttpGet]
         //[Authorize(Roles = "Timeline:6, Timeline:5, Timeline:12, Timeline:13, Timeline:15, Timeline:16, Timeline:10, Timeline:11")]
         public IEnumerable<Timeline> GetAll()

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BaseAPI.Models.Internal;
+using BaseAPI.Models.Internal.Credentials;
+using BaseAPI.Repository.Internal.Clients;
 using BaseAPI.Repository.Internal.Employees;
 using BaseAPI.Repository.Tools;
 using Microsoft.AspNetCore.Authorization;
@@ -21,11 +23,13 @@ namespace BaseAPI.Controllers
         private IEmployeeRepo _repo;
         private IPasswordTools _tools;
         private IComMail _comMail;
-        public PasswordChangeController(IEmployeeRepo repo, IPasswordTools tools, IComMail mail)
+        private IClientContactInfoRepo _crepo;
+        public PasswordChangeController(IEmployeeRepo repo, IClientContactInfoRepo crepo, IPasswordTools tools, IComMail mail)
         {
             _repo = repo;
             _tools = tools;
             _comMail = mail;
+            _crepo = crepo;
         }
         [HttpGet]
         public IEnumerable<string> Get()
@@ -58,8 +62,38 @@ namespace BaseAPI.Controllers
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public IActionResult Put(string id, [FromBody]string value)
+        public IActionResult Put(int id, [FromBody]UserCredentials value)
         {
+            if (id == 0)
+                resetEmployeePassword(value.Username);
+            else if (id == 1)
+                resetClientPassword(value.Username);
+            else
+                return StatusCode(404);
+            return StatusCode(200);
+        }
+
+        // DELETE api/<controller>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
+        private void resetClientPassword(string id)
+        {
+            var tmp = _crepo.getByUsername(id);
+            var pwd = _tools.passwordGen(10);
+            tmp.Password = _tools.passwordHash(pwd);
+            var email = new ComMails();
+            email.Email = new List<string>();
+            email.Email.Add(tmp.Email);
+            email.Message = "Please find below, your credentials to NRP Portal:<br/>Sign in as Client<br/>";
+            email.Message += "Username " + tmp.Username + "<br/>Password: " + pwd;
+            _comMail.SendMailToPar(email);
+            _crepo.update(tmp.ClientContactInfoId, tmp);
+        }
+        private void resetEmployeePassword(string id)
+        {
+           
             var tmp = _repo.getByUsername(id);
             var pwd = _tools.passwordGen(10);
             tmp.Password = _tools.passwordHash(pwd);
@@ -70,13 +104,6 @@ namespace BaseAPI.Controllers
             email.Message += "Username " + tmp.Username + "<br/>Password: " + pwd;
             _comMail.SendMailToPar(email);
             _repo.update(tmp.EmployeeId, tmp);
-            return StatusCode(200);
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

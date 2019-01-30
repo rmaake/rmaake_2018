@@ -16,7 +16,8 @@
               <a [routerLink]='["/employee-profile"]' (click)='collapse()'>
                 <div class="row" style="color:azure;">
                   <div class="col-sm-12" style="text-align:center">
-                    <img src="assets/profile.png" class="nav-img" /><p>{{employee.firstName}} {{employee.lastName}}</p>
+                    <img src="{{url}}{{employee.imagePath}}" class="nav-img" *ngIf="employee.imagePath"/>
+                    <img src="assets/profile.png" class="nav-img" *ngIf="!employee.imagePath"/><p>{{employee.firstName}} {{employee.lastName}}</p>
                   </div>
                 </div>
               </a>

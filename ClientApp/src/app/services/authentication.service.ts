@@ -89,7 +89,9 @@ export class AuthService {
         this.currentEmployee = this.currentEmployeeSubject.asObservable();
         sessionStorage.setItem('currentUser', '2');
         sessionStorage.setItem('userData', resp.text());
-        this.router.navigateByUrl('/dashboard');
+        //this.router.navigateByUrl('/dashboard');
+        var tmp = document.getElementById('btn') as HTMLAnchorElement;
+        tmp.click();
       }
       else {
         this.isLoggedInSubject.next(-2);
@@ -108,7 +110,9 @@ export class AuthService {
         this.currentClient = this.currentClientSubject.asObservable();
         sessionStorage.setItem('currentUser', '1');
         sessionStorage.setItem('userData', resp.text());
-        this.router.navigateByUrl('/client-dashboard');
+        //this.router.navigateByUrl('/client-dashboard');
+        var tmp = document.getElementById('btns') as HTMLAnchorElement;
+        tmp.click();
       }
       else {
         this.isLoggedInSubject.next(-2);

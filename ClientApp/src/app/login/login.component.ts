@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserCredentials } from '../models/userCredentials.model';
 import { AuthService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { window } from 'rxjs/operator/window';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
         this.status = -1;
       }
     });
+    
   }
   clientSignIn() {
     this.status = 1;
@@ -36,6 +38,9 @@ export class LoginComponent implements OnInit {
   }
   employeeSignIn() {
     this.status = 1;
+    if (!this.user.password || !this.user.username) {
+      this.status = -1;
+    }
     this.service.signInEmployee(this.user);
   }
 }

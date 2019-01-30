@@ -68,7 +68,7 @@
           <div class="cols-sm-10">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
-              <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Enter your old password" [(ngModel)]="oldPassword" />
+              <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Enter your old password" [(ngModel)]="passwordChange.oldPassword" />
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@
           <div class="cols-sm-10">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
-              <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="Enter your new password" [(ngModel)]="newPassword" />
+              <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="Enter your new password" [(ngModel)]="passwordChange.newPassword" />
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@
           </div>
         </div>
         <div class="row">
-          <button class="btn btn-success btn-md" (click)="submit()" [disabled]="sent">Change Password</button>
+          <button class="btn btn-success btn-md" (click)="submit()" [disabled]="!checkPassword()">Change Password</button>
         </div>
       </form>
     </div>
@@ -100,12 +100,15 @@
     <div class="well" style="background-color:none">
       <h2 style="text-align: center">Change Profile Picture</h2>
       <div class="row" style="text-align:center">
-        <img src="http://localhost:55079/api/{{employee.imagePath}}" class="img-profile"/>
+        <img src="{{url}}{{employee.imagePath}}" class="img-profile"/>
       </div>
       <br />
       <div class="row" style="text-align:center">
-        <input #file name="pic" change="fileChange(file.files)"/>
-        <button class="btn btn-primary">Change Picture</button>
+        <form>
+          <input #file type="file" id="file" name="pic" accept="image/gif,image/jpeg,image/png" (change)="fileChange(file.files)" style="display:none"/>
+          <button class="btn btn-primary" (click)="fileUpload()">Change Picture</button>
+        </form>
+        
       </div>
     </div>
   </div>
