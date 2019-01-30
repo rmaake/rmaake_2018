@@ -38,6 +38,8 @@ import { FeedbackService } from './services/Feedback.service';
 import { ClientFeedbackComponent } from './client-dashboard/client-feedback/client-feedback.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
+import { EmployeeProfileService } from './services/employeeProfile.service';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,7 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
     ClientFeedbackComponent,
     NotFoundComponent,
     NotAuthorizedComponent,
+    EmployeeProfileComponent,
     LoginComponent
   ],
   imports: [
@@ -108,10 +111,11 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
       { path: 'client-feedback', component: ClientFeedbackComponent },
       { path: 'logout', component: LogoutComponent },
       { path: 'access-control', component: NotAuthorizedComponent },
+      { path: 'employee-profile', component: EmployeeProfileComponent },
       { path: '**', component: NotFoundComponent },
     ])
   ],
-  providers: [AuthService, AdminService, ProjectService, ProjectContentService, FeedbackService],
+  providers: [AuthService, AdminService, ProjectService, ProjectContentService, FeedbackService, EmployeeProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

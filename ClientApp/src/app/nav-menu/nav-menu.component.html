@@ -12,12 +12,15 @@
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
           <ul class='nav navbar-nav' *ngIf="user == 2">
-            <li>
-              <div class="row" style="color:azure;">
-                <div class="col-sm-12" style="text-align:center">
-                  <img src="assets/profile.png" class="nav-img" /><p>{{employee.firstName}} {{employee.lastName}}</p>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/employee-profile"]' (click)='collapse()'>
+                <div class="row" style="color:azure;">
+                  <div class="col-sm-12" style="text-align:center">
+                    <img src="assets/profile.png" class="nav-img" /><p>{{employee.firstName}} {{employee.lastName}}</p>
+                  </div>
                 </div>
-              </div>
+              </a>
+              
             </li>
             <br />
             <li class="menu-header" style="font-size:10px;">DASHBOARD</li>

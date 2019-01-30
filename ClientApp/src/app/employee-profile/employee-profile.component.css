@@ -1,0 +1,9 @@
+.header {
+  background-color: #227093;
+  color: azure;
+}
+.img-profile{
+  height: 210px;
+  width: 210px;
+  border-radius: 50%;
+}
