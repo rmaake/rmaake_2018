@@ -10,6 +10,7 @@ namespace BaseAPI.Repository.Internal.Projects
     {
         IEnumerable<Timeline> getAll();
         Timeline getById(int id);
+        IEnumerable<Timeline> getByProjectId(int id);
         bool add(Timeline timeline);
         bool update(int id, Timeline timeline);
         bool delete(int id);

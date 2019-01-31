@@ -19,6 +19,10 @@ namespace BaseAPI.Repository.Internal.Projects
         {
             return _context.Timelines.ToList();
         }
+        public IEnumerable<Timeline> getByProjectId(int id)
+        {
+            return _context.Timelines.Where(obj => obj.TimelineId == id).ToList();
+        }
         public Timeline getById(int id)
         {
             return _context.Timelines.Where(obj => obj.TimelineId == id).SingleOrDefault();
