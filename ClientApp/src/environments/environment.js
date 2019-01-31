@@ -6,7 +6,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.environment = {
     production: false,
-    // apiUrl: 'http://localhost:55079/'
-    apiUrl: 'https://h7a2mdqa3g.execute-api.us-east-1.amazonaws.com/Prod/api/'
+    apiUrl: 'http://localhost:5000/api/'
+    // apiUrl: 'https://h7a2mdqa3g.execute-api.us-east-1.amazonaws.com/Prod/api/'
 };
 //# sourceMappingURL=environment.js.map

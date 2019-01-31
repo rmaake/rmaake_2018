@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
 li .glyphicon {
     margin-right: 10px;
 }
@@ -79,6 +80,6 @@ li.link-active a:focus {
   font-family:'Times New Roman', Times, serif;
   font-size: 8px;
 }
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
+
 
 
