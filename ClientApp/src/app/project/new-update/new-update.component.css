@@ -1,0 +1,19 @@
+.header {
+  background-color: #227093;
+  color: azure;
+}
+
+.info {
+  border: solid;
+  border-width: 2px;
+  padding: 4px;
+}
+
+.dashboard-img {
+  height: 30px;
+  width: 30px;
+}
+.contentUploaded{
+  height: 320px;
+  width: 320px;
+}

@@ -106,7 +106,7 @@
                   <td>{{co.projectFileId}}</td>
                   <td>{{co.description}}</td>
                   <td>{{co.date | date: 'dd/MM/yyyy HH:MM'}}</td>
-                  <td><a class="btn btn-primary btn-small" href="http://localhost:55079/{{co.filePath}}" download="{{co.filePath.split('/')[1]}}">Download</a></td>
+                  <td><a class="btn btn-primary btn-small" href="{{url}}{{co.filePath}}" download="{{co.filePath.split('/')[1]}}">Download</a></td>
 
                 </tr>
               </tbody>

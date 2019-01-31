@@ -13,6 +13,7 @@ import { Default } from '../models/default.model';
 import { ProjectService } from './project.service';
 import { SnagsComponent } from '../project/snags/snags.component';
 import { environment } from '../../environments/environment.prod';
+import { NewUpdateComponent } from '../project/new-update/new-update.component';
 
 
 @Injectable()
@@ -77,10 +78,17 @@ export class ProjectContentService {
       this.getProjectContent();
     }, err => console.log(err));
   }
-
+  addContent(content: ProjectContent) {
+    console.log(content);
+    this.http.post(this.url + 'projectcontent', content, this.options).subscribe(resp => {
+      content = resp.json() as ProjectContent;
+      this.getProjectContent();
+    }, err => console.log(err));
+  }
   addProjectContent(content: ProjectContent) {
     this.http.post(this.url + 'projectcontent', content, this.options).subscribe(resp => {
       content = resp.json() as ProjectContent;
+      this.getProjectContent();
     }, err => console.log(err));
   }
 
@@ -96,6 +104,30 @@ export class ProjectContentService {
   }
   /*Manage Uploads*/
   upload(files, obj: SnagsComponent, path: string) {
+    if (files.length === 0)
+      return;
+
+    const formData = new FormData();
+
+    for (let file of files)
+      formData.append(file.name, file);
+
+    const uploadReq = new HttpRequest('POST', this.url + `upload/` + path, formData, {
+      reportProgress: true, withCredentials: true,
+    });
+
+    this.httpClient.request(uploadReq ).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress)
+        obj.progress = Math.round(100 * event.loaded / event.total);
+      else if (event.type === HttpEventType.Response) {
+        obj.message = "success";
+        obj.content.imagePath = event.body.toString();
+      }
+       
+    });
+  }
+  /*Manage Uploads contnent*/
+  uploadContent(files, obj: NewUpdateComponent, path: string) {
     if (files.length === 0)
       return;
 

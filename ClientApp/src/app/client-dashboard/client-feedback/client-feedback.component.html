@@ -21,7 +21,7 @@
   </div>
   <div class="col-sm-9">
     <div class="well">
-      <h3>Feedback Replies | <a class="btn btn-primary" href="http://localhost:55079/{{selected.imagePath}}" target="_blank">View Image</a></h3>
+      <h3>Feedback Replies | <a class="btn btn-primary" href="{{url}}{{selected.imagePath}}" target="_blank">View Image</a></h3>
       <div class="row" style="height: 400px; overflow-y: auto;">
         <div class="well">
           <div *ngFor="let comment of selectedComments" class="well {{comment.className}}">

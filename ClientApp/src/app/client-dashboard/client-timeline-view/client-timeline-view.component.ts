@@ -27,14 +27,14 @@ export class ClientTimelineViewComponent implements OnInit {
   contact: ClientContact;
   progress: number = 0;
   message = "";
-  apiUrl = "";
+  apiUrl = environment.apiURI;
   constructor(private service: ProjectContentService, private router: Router, private route: ActivatedRoute, private feedS: FeedbackService) {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.projectId = Number(this.route.snapshot.paramMap.get('projectid'));
     this.timeline = new Timeline();
     this.feedback = new ClientFeedback();
     this.feedback.imagePath = "";
-    this.apiUrl = `${environment.apiUrl}`;
+   
     if (this.id <= 0) {
 
       this.timeline.projectId = this.projectId;
@@ -92,6 +92,9 @@ export class ClientTimelineViewComponent implements OnInit {
       }
 
     });
+  }
+  toViewContent(id: number){
+    this.router.navigateByUrl('client-feedback-view/' + id.toString());
   }
   getDefaultById(id: number) {
     this.service.defaultSubject.subscribe(resp => {

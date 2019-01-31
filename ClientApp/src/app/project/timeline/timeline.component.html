@@ -79,10 +79,10 @@
   </div>
   <div class="col-sm-6  ">
     <div class="main-login main-center well">
-      <h4 style="text-align:center">Gallery | <button class="btn btn-primary">New Update</button></h4>
+      <h4 style="text-align:center">Gallery | <button class="btn btn-primary" (click)="toContentView(0)">New Update</button></h4>
       <hr />
       <div style="height: 500px; overflow-y:auto;">
-        <img *ngFor="let data of content" src="{{apiUrl}}{{data.imagePath}}" class="gallery-img" />
+        <a *ngFor="let data of content" (click)="toContentView(data.projectContentId)"><img  src="{{apiUrl}}{{data.imagePath}}" class="gallery-img" /></a>
       </div>
     </div>
   </div>

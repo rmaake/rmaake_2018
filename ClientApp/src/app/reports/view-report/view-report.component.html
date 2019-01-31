@@ -1,0 +1,57 @@
+<div class="modal fade bd-generate-report-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h6 class="modal-title" id="exampleModalLabel">Generate Project Report</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <h5 align="center">Select type of project report you want to generate:</h5>
+                <br>
+            </form>
+            <button class="generate" (click)="downloadFullReportPDF()">FULL REPORT</button>
+            <button class="generate" (click)="downloadWeeklyReportPDF()">WEEKLY REPORT</button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    <div class="report">
+        <div class="content"  #cover>
+            <div class="header">
+                <img src="assets/nrp-logo.jpg" class="logo"><br>
+                <h4 align="center"><b>{{employee.firstName}} {{employee.lastName}}</b></h4>
+                <h4 align="center"><b>PROPERTIES & CONTRACTORS (PTY) LTD</b></h4>
+            </div>
+            <div class="topic">
+                <h1><b>UNISA LENASIA PAINTING REPORT {{today | date: 'dd/MM/yyyy'}}</b></h1>
+                <hr>
+                <div class="subtopic">
+                    <h3><b>UNISA Lenasia Painting</b></h3><br/>
+                    <h3><b>{{day[today.getDay() - 1]}}, {{today.getDate()}} {{month[today.getMonth()]}} {{today.getFullYear()}}</b></h3><br/>
+                    <h3><b>Prepared for UNISA</b></h3><br/>
+                    <h3><b>Project Status: In Progress</b></h3><br/>
+                </div>
+            </div>
+        </div>
+
+        <ul class="list-group list-group-flush">
+            <li *ngFor="let projectFile of projectFiles" class="list-group-item">
+                <div class="body" id="content{{projectFile.projectFileId}}">
+                    <div class="update">
+                        <img src="assets/ceiling.jpg">
+                        <div class="info">
+                            <h3>{{projectFile.title}}</h3>
+                            <h3 style="color:grey">Assigned To NRP</h3>
+                            <h3>{{projectFile.description}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

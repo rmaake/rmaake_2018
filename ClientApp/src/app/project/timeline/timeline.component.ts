@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
 import { ClientFeedback } from '../../models/clientFeedback.model';
 import { FeedbackService } from '../../services/Feedback.service';
 import { Employee } from '../../models/employee.model';
+import { identifierModuleUrl } from '@angular/compiler';
 @Component({
   selector: 'app-timeline',
   templateUrl: './timeline.component.html',
@@ -22,13 +23,13 @@ export class TimelineComponent implements OnInit {
   status: ProjectStatus[] = [];
   snags: Default[] = [];
   content: ProjectContent[] = [];
-  apiUrl = "";
+  apiUrl = environment.apiURI;
   feedbacks: ClientFeedback[] = [];
   constructor(private service: ProjectContentService, private router: Router, private route: ActivatedRoute, private feedS: FeedbackService) {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.projectId = Number(this.route.snapshot.paramMap.get('projectid'));
     this.timeline = new Timeline();
-    this.apiUrl = `${ environment.apiUrl }`;
+    
     if (this.id <= 0) {
       
       this.timeline.projectId = this.projectId;
@@ -51,6 +52,12 @@ export class TimelineComponent implements OnInit {
           this.feedbacks.push(resp[i]);
       }
     });
+  }
+  toContentView(id: number){
+    if (id == 0)
+      this.router.navigateByUrl('new-update/'+ this.projectId.toString() + '/' + this.id.toString());
+    else
+      this.router.navigateByUrl('new-update/'+ this.projectId.toString() + '/' + this.id.toString() + '/' + id.toString());
   }
   toViewFeedback(id: number) {
     this.router.navigateByUrl('client-feedback/' + id.toString())

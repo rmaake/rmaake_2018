@@ -41,6 +41,10 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 import { EmployeeProfileService } from './services/employeeProfile.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { WeeklyReportsComponent } from './reports/weeky-reports/weekly-reports.component';
+import { NewUpdateComponent } from './project/new-update/new-update.component';
+import { ClientFeedbackViewComponent } from './client-dashboard/client-feedback-view/client-feedback-view.component';
+import { ViewReportComponent } from './reports/view-report/view-report.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +77,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     NotAuthorizedComponent,
     EmployeeProfileComponent,
     ForgotPasswordComponent,
+    WeeklyReportsComponent,
+    NewUpdateComponent,
+    ClientFeedbackViewComponent,
+    ViewReportComponent,
     LoginComponent
   ],
   imports: [
@@ -115,6 +123,11 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
       { path: 'access-control', component: NotAuthorizedComponent },
       { path: 'employee-profile', component: EmployeeProfileComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
+      { path: 'weekly-reports', component: WeeklyReportsComponent },
+      { path: 'new-update/:projectid/:timelineid/:id', component: NewUpdateComponent },
+      { path: 'new-update/:projectid/:timelineid', component: NewUpdateComponent },
+      {path: 'client-feedback-view/:id', component: ClientFeedbackViewComponent },
+      {path: 'full-report/:id', component: ViewReportComponent },
       { path: '**', component: NotFoundComponent },
     ])
   ],

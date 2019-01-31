@@ -1,0 +1,75 @@
+.generate {
+    background-color: rgb(255, 80, 80);
+    border: none;
+    border-radius: 2px;
+    width: 250px;
+    color: rgb(245, 245, 245);
+    cursor: pointer;
+    margin:auto;
+    margin-top: 10px;
+    display:block;
+}
+
+.report {
+    position: relative;
+    left: -100%;
+}
+
+.content {
+    font-family: sans-serif;
+    height: auto;
+    width: 100%;
+    padding: 60px;
+}
+
+.header {
+    height:auto;
+    width: 97%;
+    background-color: white;
+}
+
+.topic {
+    padding-top: 460px;
+    font-size: 12px;
+    margin: 50px;
+}
+
+.subtopic {
+    padding-top: 40px;
+}
+
+.logo {
+    height: 300px;
+    width: 350px;
+    display:block;
+    margin:auto;
+}
+
+.body {
+    height: 550px;
+    padding: 60px;
+}
+
+.update {
+    padding-left: 20px;
+    margin: 0px;
+}
+
+.update img{
+    height: 550px;
+    width: 550px;
+    float: left;
+}
+
+.info {
+    position: relative;
+    left: 20px;
+}
+
+hr {
+    height: 4px;
+    background-color: rgb(146, 13, 13);
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}

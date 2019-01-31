@@ -14,6 +14,7 @@ import { ProjectContentService } from '../../services/project-content.service';
 import { Employee } from '../../models/employee.model';
 import { EmployeeTimeline } from '../../models/EmployeeTimeline.model';
 import { EmployeeRole } from '../../models/employeeRole.model';
+import { environment } from '../../../environments/environment.prod';
 
 @Component({
   selector: 'app-project-view',
@@ -39,6 +40,7 @@ export class ProjectViewComponent implements OnInit {
   tabNumber = 0;
   progress = 0;
   message = "";
+  url = environment.apiURI;
   constructor(private service: ProjectService, private route: ActivatedRoute, private router: Router, private contentS: ProjectContentService) {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.project = new Project();

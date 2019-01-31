@@ -7,6 +7,7 @@ import { ClientFeedback } from '../../models/clientFeedback.model';
 import { FeedbackComment } from '../../models/FeedbackComment.model';
 import { Employee } from '../../models/employee.model';
 import { ClientContact } from '../../models/clientContact.model';
+import { environment } from '../../../environments/environment.prod';
 
 @Component({
   selector: 'app-client-feedback',
@@ -22,6 +23,7 @@ export class ClientFeedbackComponent implements OnInit {
   employees: Employee[] = [];
   tabNumber = 0;
   selected: ClientFeedback;
+  url = environment.apiURI;
   constructor(private router: Router, private service: FeedbackService, private adminS: AdminService, private route: ActivatedRoute) {
     this.comment = new FeedbackComment();
     this.tabNumber = Number(this.route.snapshot.paramMap.get('id'));
